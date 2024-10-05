@@ -1,0 +1,79 @@
+/* SignUpDonor.module.css */
+
+.container {
+    max-width: 400px; /* Set a max width for the form */
+    margin: 50px auto; /* Center the form */
+    padding: 30px; /* Add padding */
+    border-radius: 12px; /* Rounded corners */
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1); /* Subtle shadow */
+    background-color: #ffffff; /* White background for the form */
+    border: 1px solid #eaeaea; /* Light border for the form */
+}
+
+h2 {
+    text-align: center; /* Center the title */
+    margin-bottom: 20px; /* Space below the title */
+    color: #333; /* Dark text color */
+    font-size: 2rem; /* Larger font size for title */
+}
+
+.form {
+    display: flex; /* Use flexbox for layout */
+    flex-direction: column; /* Stack elements vertically */
+}
+
+.formGroup {
+    margin-bottom: 15px; /* Space below each form group */
+}
+
+label {
+    margin-bottom: 5px; /* Space below label */
+    font-weight: bold; /* Bold text for labels */
+    color: #555; /* Darker color for labels */
+}
+
+input {
+    width: 100%; /* Full width for inputs */
+    padding: 12px; /* Padding for inputs */
+    margin: 5px 0; /* Space above and below */
+    border: 1px solid #ddd; /* Light border */
+    border-radius: 6px; /* Rounded corners */
+    font-size: 16px; /* Font size */
+    transition: border-color 0.3s; /* Smooth transition */
+}
+
+input:focus {
+    border-color: #28a745; /* Change border color on focus */
+    outline: none; /* Remove default outline */
+}
+
+.submitButton {
+    width: 100%; /* Full width for button */
+    padding: 12px; /* Padding for button */
+    background-color: #28a745; /* Green background */
+    color: white; /* White text color */
+    border: none; /* No border */
+    border-radius: 6px; /* Rounded corners */
+    font-size: 18px; /* Larger font size for button */
+    cursor: pointer; /* Pointer cursor on hover */
+    transition: background-color 0.3s, transform 0.3s; /* Smooth transition */
+}
+
+.submitButton:hover {
+    background-color: #218838; /* Darker green on hover */
+    transform: translateY(-2px); /* Slight lift effect on hover */
+}
+
+.message {
+    text-align: center; /* Center message */
+    margin-top: 15px; /* Space above */
+    font-size: 1rem; /* Font size */
+    color: #28a745; /* Green color for success messages */
+}
+
+.errorMessage {
+    color: red; /* Red color for error messages */
+    text-align: center; /* Center error messages */
+    margin-top: 10px; /* Space above */
+    font-size: 0.9rem; /* Smaller font size for error messages */
+}

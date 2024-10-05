@@ -1,0 +1,49 @@
+.aboutUs {
+    padding: 60px 20px;
+    text-align: center;
+    background-color: #f8f9fa; /* Light background for contrast */
+    border-radius: 10px; /* Rounded corners for a softer look */
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1); /* Subtle shadow for depth */
+}
+
+.aboutUs h2 {
+    font-size: 2.5rem;
+    color: #333;
+    margin-bottom: 20px;
+    font-family: 'Arial', sans-serif; /* Modern font */
+}
+
+.aboutUs p {
+    font-size: 1.2rem;
+    color: #666;
+    max-width: 800px;
+    margin: auto;
+    line-height: 1.5; /* Better readability */
+}
+
+.impactStats {
+    display: flex; /* Flexbox for responsive layout */
+    justify-content: center; /* Center the stats */
+    margin-top: 40px; /* Space above stats */
+}
+
+.stat {
+    background-color: #fff; /* White background for stats */
+    border-radius: 8px; /* Rounded corners */
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); /* Subtle shadow */
+    padding: 20px; /* Padding inside each stat box */
+    margin: 0 20px; /* Space between stat boxes */
+    flex: 1; /* Equal size for all stat boxes */
+    max-width: 200px; /* Limit the width of each stat box */
+}
+
+.stat h3 {
+    font-size: 2rem; /* Slightly larger font size */
+    color: #007bff; /* Bootstrap primary color */
+    margin-bottom: 10px; /* Space between number and label */
+}
+
+.stat p {
+    font-size: 1rem; /* Smaller font for description */
+    color: #666;
+}

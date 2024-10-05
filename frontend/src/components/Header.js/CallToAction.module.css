@@ -1,0 +1,80 @@
+.callToAction {
+    padding: 60px 20px; /* Increased padding for a more spacious feel */
+    text-align: center;
+    background-color: #28a745; /* Vibrant green background */
+    color: white;
+    border-radius: 10px; /* Rounded corners for a softer appearance */
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1); /* Subtle shadow for depth */
+}
+
+.callToAction h2 {
+    font-size: 2.5rem; /* Larger font for the heading */
+    margin-bottom: 15px;
+    font-family: 'Arial', sans-serif; /* Modern font */
+}
+
+.callToAction p {
+    font-size: 1.2rem; /* Increased font size for better readability */
+    margin-bottom: 20px; /* Space below paragraph */
+}
+
+.buttonGroup {
+    display: flex; /* Flexbox for aligning buttons */
+    justify-content: center; /* Center the buttons */
+    gap: 10px; /* Space between buttons */
+    margin-bottom: 20px; /* Space below buttons */
+}
+
+.newsletter {
+    display: flex; /* Flexbox for newsletter input and button */
+    justify-content: center; /* Center the input and button */
+    margin-top: 20px; /* Space above newsletter input */
+}
+
+.newsletterInput {
+    padding: 10px; /* Padding inside input */
+    font-size: 1rem; /* Font size for the input */
+    border: none; /* Remove default border */
+    border-radius: 5px; /* Rounded corners for input */
+    margin-right: 10px; /* Space between input and button */
+}
+
+.btnPrimary {
+    background-color: #007bff; /* Bootstrap primary color */
+    color: white;
+    padding: 10px 20px; /* Padding inside buttons */
+    font-size: 1.2rem; /* Font size for buttons */
+    border: none; /* Remove default border */
+    border-radius: 5px; /* Rounded corners */
+    cursor: pointer; /* Pointer cursor on hover */
+    transition: background-color 0.3s; /* Smooth transition for hover effect */
+}
+
+.btnPrimary:hover {
+    background-color: #0056b3; /* Darker shade on hover */
+}
+
+.btnSecondary {
+    background-color: transparent; /* Transparent background */
+    border: 2px solid white; /* White border */
+    color: white;
+    padding: 10px 20px; /* Padding inside buttons */
+    font-size: 1.2rem; /* Font size for buttons */
+    border-radius: 5px; /* Rounded corners */
+    cursor: pointer; /* Pointer cursor on hover */
+    transition: background-color 0.3s, color 0.3s; /* Smooth transition */
+}
+
+.btnSecondary:hover {
+    background-color: white; /* White background on hover */
+    color: #28a745; /* Change text color to match the section */
+}
+.link {
+    text-decoration: none; /* Remove underline */
+}
+
+.buttonGroup {
+    display: flex; /* Align buttons horizontally */
+    justify-content: center; /* Center buttons */
+    margin: 20px 0; /* Add spacing around the button group */
+}

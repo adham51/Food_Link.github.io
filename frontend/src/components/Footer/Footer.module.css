@@ -1,0 +1,79 @@
+.footer {
+    background-color: #343a40; /* Dark background */
+    color: white; /* White text color */
+    padding: 60px 20px; /* Increased padding around the footer */
+    text-align: center; /* Centered text */
+    width: 100%; /* Full width */
+}
+
+.footerContent {
+    display: flex; /* Flexbox layout for contact and social sections */
+    justify-content: space-between; /* Space between the two sections */
+    max-width: 1200px; /* Max width for larger screens */
+    margin: 0 auto; /* Center the footer content */
+}
+
+.contactInfo {
+    flex: 1; /* Flex grow for contact section */
+    margin-right: 20px; /* Space between sections */
+}
+
+.socialMedia {
+    flex: 1; /* Flex grow for social media section */
+}
+
+h3 {
+    font-size: 1.5rem; /* Font size for headings */
+    margin-bottom: 15px; /* Space below heading */
+    color: #28a745; /* Green color for headings */
+}
+
+p {
+    margin: 5px 0; /* Margin for paragraphs */
+    font-size: 1rem; /* Font size for paragraphs */
+}
+
+.contactLink {
+    color: #007bff; /* Link color */
+    text-decoration: none; /* No underline */
+}
+
+.contactLink:hover {
+    text-decoration: underline; /* Underline on hover */
+}
+
+.socialIcons {
+    display: flex; /* Flexbox for social icons */
+    justify-content: center; /* Center social icons */
+    gap: 15px; /* Space between social icons */
+}
+
+.socialIcon {
+    display: flex; /* Make sure the icon wraps around the image */
+    justify-content: center; /* Center icon */
+}
+
+.icon {
+    width: 30px; /* Adjust the size of the icons */
+    height: auto; /* Maintain aspect ratio */
+    transition: transform 0.3s; /* Transition effect */
+}
+
+.icon:hover {
+    transform: scale(1.1); /* Scale up on hover */
+}
+
+.footerLinks {
+    margin-top: 20px; /* Space above footer links */
+    font-size: 0.9rem; /* Smaller font size for footer links */
+}
+
+.footerLink {
+    color: #ffffff; /* White color for footer links */
+    text-decoration: none; /* No underline */
+    transition: color 0.3s; /* Transition effect */
+}
+
+.footerLink:hover {
+    color: #28a745; /* Change color on hover */
+}

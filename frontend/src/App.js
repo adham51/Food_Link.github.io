@@ -5,6 +5,9 @@ import DonerDashboard from './components/DonerDashBoard/DonerDashBoard';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import FoodDonationApp from './components/CharityDashBoard/FoodDonationApp';
 import styles from './App.module.css'
+import Navbar from './components/Header.js/NavBar';
+import { Outlet } from 'react-router';
+import LandingPage from './components/Header.js/LandingPage';
 
 
 const App = () => {
@@ -15,7 +18,9 @@ const App = () => {
             
         // </FoodProvider>
         <div >
-            <FoodDonationApp/>
+            {/* <FoodDonationApp/> */}
+            
+            <LandingPage></LandingPage>
         </div>
     );
 };

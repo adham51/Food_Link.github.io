@@ -11,9 +11,9 @@ const jwt = require('jsonwebtoken');
 
 // Register a new user (Donor or Charity)
 
-user.post('/register', async (req, res) => {
+user.post('/registerdonor', async (req, res) => {
 
-    const { name, email, password, user_type } = req.body;
+    const { name, email, password } = req.body;
 
     const hach = await bcrypt.hash(password, 7)
 
@@ -29,7 +29,7 @@ user.post('/register', async (req, res) => {
 
         else {
 
-            db.query(`INSERT INTO users (name, email, password, user_type) VALUES ('${name}', '${email}', '${hach}' , '${user_type}')`, (err, data) => {
+            db.query(`INSERT INTO users (name, email, password, user_type) VALUES ('${name}', '${email}', '${hach}' , 'donor')`, (err, data) => {
 
                 if (err) {
 
@@ -53,7 +53,47 @@ user.post('/register', async (req, res) => {
 
 });
 
+user.post('/registercharity', async (req, res) => {
 
+    const { name, email, password } = req.body;
+
+    const hach = await bcrypt.hash(password, 7)
+
+
+
+    db.query(`select * from users where email = '${email}'`, (err, data) => {
+
+        if (data.length) {
+
+            res.json({ message: 'User already exists, Login instead of register' });
+
+        }
+
+        else {
+
+            db.query(`INSERT INTO users (name, email, password, user_type) VALUES ('${name}', '${email}', '${hach}' , 'charity')`, (err, data) => {
+
+                if (err) {
+
+                    res.json({ message: 'Error' });
+
+                    console.log(err);
+
+                }
+
+                else {
+
+                    res.json({ message: 'User registered successfully' });
+
+                }
+
+            });
+
+        }
+
+    });
+
+});
 
 
 

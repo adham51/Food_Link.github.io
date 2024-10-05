@@ -1,0 +1,18 @@
+.howItWorks {
+    padding: 60px 20px;
+    text-align: center;
+    background-color: #f8f9fa;
+}
+
+.howItWorks h2 {
+    font-size: 2.5rem;
+    color: #333;
+    margin-bottom: 20px;
+}
+
+.howItWorks p {
+    font-size: 1.2rem;
+    color: #666;
+    max-width: 800px;
+    margin: auto;
+}

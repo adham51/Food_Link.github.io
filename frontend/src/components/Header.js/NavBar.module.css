@@ -1,0 +1,36 @@
+/* NavBar.module.css */
+.navbar {
+    padding: 15px 20px;
+    background-color: #343a40; /* Dark background */
+}
+
+.navbar-brand {
+    display: flex;
+    align-items: center;
+    color: white;
+    margin-right: 10px; 
+}
+
+.navbar-brand img {
+    height: 40px; /* Adjust the size of the logo */
+    width: 40px; /* Ensure to add px here for proper rendering */
+    margin-right: 10px; /* Space between logo and text */
+}
+
+.nav-link {
+    color: white;
+    margin: 0 15px; /* Space between links */
+}
+
+.nav-link:hover {
+    text-decoration: underline; /* Underline on hover */
+}
+
+.navbar-collapse {
+    justify-content: flex-end; /* Aligns the nav links to the right */
+}
+.logo {
+    width: 40px; /* Adjust this size as needed */
+    height: auto; /* Maintain aspect ratio */
+    margin-right: 8px; /* Space between logo and text */
+}
