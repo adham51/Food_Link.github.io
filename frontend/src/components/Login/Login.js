@@ -40,7 +40,7 @@ const Login = () => {
                 else {
                     // Optionally handle other user types
                     // navigate('/SomeOtherComponent'); 
-                    navigate('/FoodDonationApp'); // Redirect to FoodDonationApp for donor as well (if applicable)
+                    navigate('/DonerDashBoard'); // Redirect to FoodDonationApp for donor as well (if applicable)
                 }
             }
         } catch (error) {
