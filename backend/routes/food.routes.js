@@ -23,25 +23,38 @@ const authenticateToken = (req, res, next) => {
 
 
 // API to add a new food donation
-food.post('/add', authenticateToken, (req, res) => {  // 'authenticateToken' middleware ensures only logged-in users can access this route
-    const { food_name, quantity, description, expiration_date } = req.body;  // Extract food data from the request body
-    const { user_id, user_type } = req.user;  // Extract user_id and user_type from the JWT token
-
-    if (user_type !== 'donor') {  // Check if the user is a donor, only donors can add food
-        return res.json({ message: 'You are not a donor' });
-    }
-
-    // Add food item with the user_id from the token
-    db.query(`INSERT INTO foodlist (user_id, food_name, quantity, description, expiration_date, status) VALUES (${user_id}, '${food_name}', ${quantity}, '${description}', '${expiration_date}', 'available')`, (err, data) => {
-        if (err) {
-            res.json({ message: 'Error adding food item' });  // If there's an error, send a response with an error message
-            console.log(err);  // Log the error for debugging purposes
-        } else {
-            res.json({ message: 'Food Added Successfully' });  // If successful, send a success message
-        }
-    });
+food.post('/add', (req, res) => {
+        const { user_id, food_name, quantity, description, expiration_date } = req.body;
+        
+        db.query(`select * from users where user_id = ${user_id}`,(err,data)=>{
+            if(err)
+            {
+                res.json({message: 'Error'});
+                console.log(err);
+            }
+            else
+            {
+                if(data[0].user_type == 'donor')
+                {
+                    db.query(`INSERT INTO foodlist (user_id, food_name, quantity, description, expiration_date, status) VALUES (${user_id},'${food_name}' , ${quantity}, '${description}', '${expiration_date}', 'available')`,(err,data)=>{
+                        if(err)
+                        {
+                            res.json({message: 'Error'});
+                        }
+                        else
+                        {
+                            res.json({message: 'Food Added Successfully'});
+                        }
+                    });
+                }
+                else
+                {
+                    res.json({message: 'You are not a donor'});
+                }
+            }
+        });
+        
 });
-
 
 // API to get all available food items
 food.get('/available',(req,res)=>{
