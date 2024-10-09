@@ -54,46 +54,37 @@ user.post('/registerdonor', async (req, res) => {
 });
 
 user.post('/registercharity', async (req, res) => {
-
     const { name, email, password } = req.body;
 
-    const hach = await bcrypt.hash(password, 7)
+    // Hash the password with bcrypt
+    const hashedPassword = await bcrypt.hash(password, 7);
 
-
-
-    db.query(`select * from users where email = '${email}'`, (err, data) => {
-
+    // Check if the user already exists
+    db.query(`SELECT * FROM users WHERE email = '${email}'`, (err, data) => {
         if (data.length) {
-
-            res.json({ message: 'User already exists, Login instead of register' });
-
-        }
-
-        else {
-
-            db.query(`INSERT INTO users (name, email, password, user_type) VALUES ('${name}', '${email}', '${hach}' , 'charity')`, (err, data) => {
-
+            res.json({ message: 'User already exists, Login instead of registering' });
+        } else {
+            // Insert new user into the database
+            db.query(`INSERT INTO users (name, email, password, user_type) VALUES ('${name}', '${email}', '${hashedPassword}', 'charity')`, (err, result) => {
                 if (err) {
-
-                    res.json({ message: 'Error' });
-
+                    res.json({ message: 'Error registering user' });
                     console.log(err);
-
+                } else {
+                    // After inserting, retrieve the inserted user's ID
+                    db.query(`SELECT user_id FROM users WHERE email = '${email}'`, (err, data) => {
+                        if (err) {
+                            res.json({ message: 'Error retrieving user ID' });
+                        } else {
+                            const userId = data[0].user_id; // Get the user_id (charity_id)
+                            res.json({ message: 'User registered successfully', charity_id: userId });
+                        }
+                    });
                 }
-
-                else {
-
-                    res.json({ message: 'User registered successfully' });
-
-                }
-
             });
-
         }
-
     });
-
 });
+
 
 
 

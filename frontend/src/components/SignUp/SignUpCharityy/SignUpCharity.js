@@ -2,8 +2,7 @@ import React, { useState } from 'react';
 import axios from 'axios';
 import styles from './SignUpCharity.module.css'; // Make sure to create a CSS file for styling
 
-
-const SignUpCharity = () => {
+const SignUpCharity = () => {  
     const [formData, setFormData] = useState({
         name: '',
         email: '',
@@ -11,6 +10,7 @@ const SignUpCharity = () => {
     });
 
     const [message, setMessage] = useState('');
+    const [charityId, setCharityId] = useState(''); // To store and display charity_id
 
     const handleChange = (e) => {
         const { name, value } = e.target;
@@ -25,6 +25,12 @@ const SignUpCharity = () => {
         try {
             const response = await axios.post('/registercharity', formData);
             setMessage(response.data.message);
+            
+            // Check if the response contains charity_id
+            if (response.data.charity_id) {
+                setCharityId(response.data.charity_id); // Set charity_id
+            }
+
             // Optionally, reset the form after successful submission
             setFormData({ name: '', email: '', password: '' });
         } catch (error) {
@@ -35,7 +41,6 @@ const SignUpCharity = () => {
 
     return (
         <div className={styles.container}>
-            
             <h2>Sign Up as Charity</h2>
             <form onSubmit={handleSubmit} className={styles.form}>
                 <div className={styles.formGroup}>
@@ -74,6 +79,7 @@ const SignUpCharity = () => {
                 <button type="submit" className={styles.submitButton}>Sign Up</button>
             </form>
             {message && <p className={styles.message}>{message}</p>}
+            {charityId && <p className={styles.charityId}>Your Charity ID: {charityId}</p>} {/* Display charity_id */}
         </div>
     );
 };

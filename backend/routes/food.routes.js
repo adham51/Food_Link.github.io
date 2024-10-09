@@ -91,7 +91,18 @@ food.delete('/deletefood/:food_id',(req,res)=>{
 
 
 
+// Route to get food item details by food_id
+food.get('/food/:food_id', (req, res) => {
+    const { food_id } = req.params;
 
+    db.query(`SELECT * FROM foodlist WHERE food_id = ${food_id}`, (err, data) => {
+        if (err || data.length === 0) {
+            res.json({ message: 'Food item not found' });
+        } else {
+            res.json(data[0]); // Return the food item details
+        }
+    });
+});
 
 
 module.exports = food;

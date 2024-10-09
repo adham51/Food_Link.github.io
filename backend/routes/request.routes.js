@@ -4,47 +4,55 @@ const bcrypt = require('bcrypt');
 const { query } = require('express');
 const jwt = require('jsonwebtoken');
 
+const authenticateToken = (req, res, next) => {
+    const token = req.headers['authorization'];
+
+    if (!token) return res.json({ message: 'Token missing' });
+
+    jwt.verify(token, 'secretkey', (err, user) => {
+        if (err) return res.json({ message: 'Invalid token' });
+        req.user = user; // Attach the decoded user object (including user_id and user_type) to the request
+        next();
+    });
+};
+
+
 // Make a new request for food by a charity
-request.post('/request', (req, res) => {
-    const { food_id, charity_id } = req.body;
-    db.query(`SELECT * FROM users WHERE user_id = ${charity_id}`, (err, data) => {
+request.post('/request', authenticateToken, (req, res) => {
+    const { food_id } = req.body;
+    const { user_id, user_type } = req.user; // Extract the charity_id and user_type from the token
+
+    // Ensure the user is a charity
+    if (user_type !== 'charity') {
+        return res.json({ message: 'You are not a charity' });
+    }
+
+    // Check if the food item exists and is available
+    db.query(`SELECT * FROM foodlist WHERE food_id = ${food_id}`, (err, data) => {
         if (err) {
-            res.json({ message: 'Error' });
+            res.json({ message: 'Error fetching food item' });
+        } else if (!data.length || data[0].status !== 'available') {
+            res.json({ message: 'Food is not available or does not exist' });
         } else {
-            if (data[0].user_type == 'charity') {
-                db.query(`select * from foodlist where food_id = ${food_id} `,(err,data)=>{
-                    if(err)
-                    {
-                        res.json({message: 'Error'});
-                    }
-                    else if(data[0].status !== 'available')
-                    {
-                        res.json({message:'food is not available'});
-                    }
-                    else
-                    {
-                        db.query(`INSERT INTO requests (food_id, charity_id, status) VALUES (${food_id}, ${charity_id}, 'pending')`, (err, data) => {
-                            if (err) {
-                                res.json({ message: 'Error' });
-                            } else {
-                                db.query(`UPDATE foodlist SET status = 'claimed' WHERE food_id = ${food_id}`, (err, data) => {
-                                    if (err) {
-                                        res.json({ message: 'Error' });
-                                    } else {
-                                        res.json({ message: 'Request made successfully' });
-                                    }
-                                });
-                            }
-                        });
-                    }
-                });
-                
-            } else {
-                res.json({ message: 'You are not a charity' });
-            }
+            // Insert the request with the charity_id (from token)
+            db.query(`INSERT INTO requests (food_id, charity_id, status) VALUES (${food_id}, ${user_id}, 'pending')`, (err, data) => {
+                if (err) {
+                    res.json({ message: 'Error making request' });
+                } else {
+                    // Update the status of the food item to 'claimed'
+                    db.query(`UPDATE foodlist SET status = 'claimed' WHERE food_id = ${food_id}`, (err, data) => {
+                        if (err) {
+                            res.json({ message: 'Error updating food status' });
+                        } else {
+                            res.json({ message: 'Request made successfully' });
+                        }
+                    });
+                }
+            });
         }
     });
 });
+
 
 // Update the status of a request (e.g., 'fulfilled' or 'cancelled')
 request.put('/updaterequest/:requestId', (req, res) => {
