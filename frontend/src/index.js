@@ -15,6 +15,7 @@ import SignUpDonor from './components/SignUp/SignUpDonor/SignUpDonor';
 import SignUpCharity from './components/SignUp/SignUpCharityy/SignUpCharity';
 import Login from './components/Login/Login';
 import FoodDonationApp from './components/CharityDashBoard/FoodDonationApp';
+import DonorDashBoard from './components/DonerDashBoard/DonerDashBoard';
 
 const router = createBrowserRouter([
   {
@@ -32,7 +33,8 @@ const router = createBrowserRouter([
   {path: "/SignUpDonor", element: <SignUpDonor></SignUpDonor>},
   {path: "/SignUpCharity", element: <SignUpCharity></SignUpCharity>},
   {path: "/Login", element: <Login></Login>},
-  {path: "/FoodDonationApp", element: <FoodDonationApp></FoodDonationApp>}
+  {path: "/FoodDonationApp", element: <FoodDonationApp></FoodDonationApp>},
+  {path: "/DonorDashBoard", element: <DonorDashBoard></DonorDashBoard>},
 ])
 
 const root = ReactDOM.createRoot(document.getElementById('root'));

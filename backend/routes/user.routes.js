@@ -121,7 +121,7 @@ user.post('/login', (req, res) => {
 
                 if (validPassword) {
 
-                    const token = jwt.sign({ user_type: data[0].user_type }, 'secretkey');
+                    const token = jwt.sign({ user_type: data[0].user_type, user_id: data[0].user_id }, 'secretkey');
 
                     res.json({ message: 'User logged in', token, data });
 

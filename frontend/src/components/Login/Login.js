@@ -33,7 +33,11 @@ const Login = () => {
                 // Check user type and redirect accordingly
                 if (response.data.data[0].user_type === 'charity') {
                     navigate('/FoodDonationApp'); // Redirect to FoodDonationApp for charity
-                } else {
+                } 
+                else if (response.data.data[0].user_type === 'donor') {
+                    navigate('/DonerDashBoard'); 
+                }
+                else {
                     // Optionally handle other user types
                     // navigate('/SomeOtherComponent'); 
                     navigate('/FoodDonationApp'); // Redirect to FoodDonationApp for donor as well (if applicable)

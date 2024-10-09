@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Oct 04, 2024 at 04:01 AM
+-- Generation Time: Oct 09, 2024 at 10:46 PM
 -- Server version: 10.4.32-MariaDB
 -- PHP Version: 8.2.12
 
@@ -56,7 +56,8 @@ INSERT INTO `foodlist` (`food_id`, `user_id`, `food_name`, `quantity`, `descript
 (13, 4, 'كبسه', 5, 'Fresh fresh', '2024-10-05', 'available', '2024-10-03 21:38:29'),
 (14, 4, 'ارز', 5, 'Fresh fresh', '2024-10-05', 'available', '2024-10-03 21:38:37'),
 (15, 4, 'مكرونه', 5, 'Fresh fresh', '2024-10-05', 'claimed', '2024-10-03 21:38:46'),
-(16, 2, 'كبده', 5, 'Fresh fresh', '2024-10-05', 'available', '2024-10-04 02:53:55');
+(16, 2, 'كبده', 5, 'Fresh fresh', '2024-10-05', 'available', '2024-10-04 02:53:55'),
+(17, 12, 'فول', 5, 'Fresh fresh', '2024-10-05', 'claimed', '2024-10-09 21:08:53');
 
 -- --------------------------------------------------------
 
@@ -85,7 +86,8 @@ INSERT INTO `requests` (`request_id`, `food_id`, `charity_id`, `requested_at`, `
 (8, 11, 5, '2024-10-03 21:22:40', 'pending'),
 (9, 9, 3, '2024-10-03 21:28:37', 'pending'),
 (10, 7, 6, '2024-10-04 03:40:08', 'pending'),
-(11, 15, 3, '2024-10-04 04:29:51', 'pending');
+(11, 15, 3, '2024-10-04 04:29:51', 'pending'),
+(12, 17, 14, '2024-10-09 23:17:47', 'pending');
 
 -- --------------------------------------------------------
 
@@ -112,7 +114,16 @@ INSERT INTO `users` (`user_id`, `name`, `email`, `password`, `user_type`, `creat
 (3, 'Ali', 'mido@gmail.com', '$2b$07$rqdbpLK7tGxgIvgr.YJscOVJTgYngwmImKggOOJc6GDj08FHltAV.', 'charity', '2024-10-03 03:50:13'),
 (4, 'Ali', 'mido@gmail.com', '$2b$07$HYeSbZJfKxMMce/xd7YlH.DBd0xaEFO3sINkWFsmN7KzX9AiHnMPe', 'donor', '2024-10-03 17:42:54'),
 (5, 'Ali', 'mido@gmail.com', '$2b$07$uZUhgqmYzw/PZKEt58PM4OZCN7x4WgrTvlpOIPHKN6hQ0sdkkILwy', 'charity', '2024-10-03 17:43:45'),
-(6, 'Ali', 'mido@gmail.com', '$2b$07$OsYDAEZitPbBeHFPOfTIt.EjUwFUNPTrmLxmltzgS.IxlzNmPD012', 'charity', '2024-10-04 02:23:01');
+(6, 'Ali', 'mido@gmail.com', '$2b$07$OsYDAEZitPbBeHFPOfTIt.EjUwFUNPTrmLxmltzgS.IxlzNmPD012', 'charity', '2024-10-04 02:23:01'),
+(7, 'mohamed', 'alofglll@gmail.com', '$2b$07$Jv3jVfAJ6V2E3kesDUZ4dOwHiYRiASrMtFxjYBLY5S89x7/M7IYDi', 'donor', '2024-10-06 01:53:59'),
+(8, 'sophi kaper', 'sophi@gmial.com', '$2b$07$2HuI4c7YOYLjVJ84W2EtheC.NgxL2Skr0xan.msF17eTMtYXxC/qK', 'charity', '2024-10-06 01:56:05'),
+(9, 'ali', 'john.doe@example.com', '$2b$07$xt9z50Li4Cv7FpYuvElm4eDdU5XY0FrYWyqXVJ6JG4tmHrCCl67de', 'donor', '2024-10-06 02:07:07'),
+(10, 'Mohamed', 'm@gmail.com', '$2b$07$DTbBT5y1Ateiw5N10qfJXOHhHwBac3deamKcaTnoYLSYKpHQYn0wW', 'donor', '2024-10-06 02:13:55'),
+(11, 'قصر الكبابجي', 'kasr@gmail.com', '$2b$07$MUDCRLBvF/LZloYMuAzY1OCCciqRD0hPX97Jbf8ckZXT1QtJ6un/a', 'charity', '2024-10-06 02:26:01'),
+(12, 'kamal', 'kamal@gmail.com', '$2b$07$lHGAaGe76BllB8Q0IoBzV.WIjGFG1mrATwLXhxCUj74HOnVGUlLSG', 'donor', '2024-10-09 21:04:42'),
+(13, 'adham', 'adham@gmail.com', '$2b$07$DO8NRUxOno2baI/XbeCAnOmgJ88ZkSkZKimDm4c.gRtUFbxEBGKpe', 'donor', '2024-10-09 23:14:51'),
+(14, 'kaber', 'kaberr@gmail.com', '$2b$07$BxdwhejwY6pjq3PN2C7mhuTwihVfl6YV7Upu0eRABbtxBrnyyxkIu', 'charity', '2024-10-09 23:16:25'),
+(15, 'tema', 'tema@gmail.com', '$2b$07$KKOEd2tMoGGzcsi4HioGRO.FLxE93uSQGD4m1WZx7yvnWTKeZhNri', 'charity', '2024-10-09 23:31:22');
 
 --
 -- Indexes for dumped tables
@@ -147,19 +158,19 @@ ALTER TABLE `users`
 -- AUTO_INCREMENT for table `foodlist`
 --
 ALTER TABLE `foodlist`
-  MODIFY `food_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=17;
+  MODIFY `food_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=18;
 
 --
 -- AUTO_INCREMENT for table `requests`
 --
 ALTER TABLE `requests`
-  MODIFY `request_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
+  MODIFY `request_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
 
 --
 -- AUTO_INCREMENT for table `users`
 --
 ALTER TABLE `users`
-  MODIFY `user_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+  MODIFY `user_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=16;
 
 --
 -- Constraints for dumped tables
