@@ -10,19 +10,19 @@ export const FoodProvider = ({ children }) => {
   const [currUserId, setCurrUserID] = useState(7);
 
 
-  // Fetch food items from the backend when the component mounts
-  // useEffect(() => {
-  //   const fetchFoodItems = async () => {
-  //     try {
-  //       const response = await axios.get("/available"); // Update this URL as necessary
-  //       setFoodList(response.data); // Assuming response.data is an array of food items
-  //     } catch (error) {
-  //       console.error("Error fetching food items:", error);
-  //     }
-  //   };
 
-  //   fetchFoodItems();
-  // }, []);
+  useEffect(() => {
+    const fetchFoodItems = async () => {
+      try {
+        const response = await axios.get("/available"); // Update this URL as necessary
+        setFoodList(response.data); // Assuming response.data is an array of food items
+      } catch (error) {
+        console.error("Error fetching food items:", error);
+      }
+    };
+
+    fetchFoodItems();
+  }, []);
 
   const addFoodItem = async (newFood) => {
     try {
