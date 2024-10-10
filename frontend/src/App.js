@@ -11,12 +11,12 @@ import LandingPage from "./components/Header.js/LandingPage";
 const App = () => {
   return (
     <div>
-      {/* <FoodProvider>
+      <FoodProvider>
         <DonerDashboard />
       </FoodProvider>
-      <FoodDonationApp /> */}
 
-      <LandingPage></LandingPage>
+
+      {/* <LandingPage></LandingPage> */}
     </div>
   );
 };
