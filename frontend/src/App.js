@@ -1,6 +1,6 @@
 import React from "react";
 import { FoodProvider } from "./context/FoodContext";
-import DonerDashboard from "./components/DonerDashBoard/DonerDashBoard";
+import DonerDashboard from "./components/DonorDashBoard/DonorDashBoard";
 import "bootstrap/dist/css/bootstrap.min.css";
 import FoodDonationApp from "./components/CharityDashBoard/FoodDonationApp";
 import styles from "./App.module.css";
@@ -11,12 +11,8 @@ import LandingPage from "./components/Header.js/LandingPage";
 const App = () => {
   return (
     <div>
-      <FoodProvider>
-        <DonerDashboard />
-      </FoodProvider>
 
-
-      {/* <LandingPage></LandingPage> */}
+      <LandingPage></LandingPage>
     </div>
   );
 };

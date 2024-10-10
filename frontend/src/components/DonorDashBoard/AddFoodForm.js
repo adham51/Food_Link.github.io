@@ -9,7 +9,6 @@ const AddFoodForm = () => {
     const [description, setDescription] = useState('');
     const [expirationDate, setExpirationDate] = useState('');
     const [error, setError] = useState('');
-    const [userId, setUserId] = useState(null);
 
     const handleSubmit = async (e) => {
         e.preventDefault();
@@ -22,7 +21,6 @@ const AddFoodForm = () => {
 
         // Create new food item
         const newFood = {
-            user_id: userId,
             food_name: foodName,
             quantity: Number(quantity),
             description: description,
@@ -31,11 +29,16 @@ const AddFoodForm = () => {
 
         try {
             // Make a POST request to your backend
-            const response = await axios.post('/add', newFood);
+            const response = await axios.post('/add', newFood, {
+                headers: {
+                    'Authorization': `${localStorage.getItem('token')}`
+                }
+            });
+
             // Add the new food item to context state
             addFoodItem(response.data); // Ensure this data matches the format you need
+
             // Clear the form fields
-            setUserId(null);
             setFoodName('');
             setQuantity('');
             setDescription('');
@@ -52,19 +55,6 @@ const AddFoodForm = () => {
             {error && <div className="alert alert-danger">{error}</div>}
             <form onSubmit={handleSubmit}>
                 <div className="mb-3">
-
-                <div className="mb-3">
-                    <label htmlFor="user-id" className="form-label">user_id:</label>
-                    <input
-                        id="user-id"
-                        className="form-control"
-                        value={userId}
-                        onChange={(e) => setUserId(e.target.value)}
-                        required
-                    />
-                </div>
-
-
                     <label htmlFor="foodName" className="form-label">Food Name:</label>
                     <input
                         type="text"

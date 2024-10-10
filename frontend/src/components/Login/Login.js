@@ -1,10 +1,12 @@
-import React, { useState } from 'react';
+import React, { useContext, useState } from 'react';
 import axios from 'axios';
 import { useNavigate } from 'react-router-dom'; // Import useNavigate
 import styles from './Login.module.css'; // Make sure to create a CSS file for styling
+import {FoodContext} from '../../context/FoodContext'
 
 
 const Login = () => {
+    const { handleUserLogin } = useContext(FoodContext); // Access context
     const [formData, setFormData] = useState({
         email: '',
         password: '',
@@ -29,6 +31,8 @@ const Login = () => {
 
             if (response.data.token) {
                 localStorage.setItem('token', response.data.token); // Save token to local storage
+                const user_id = response.data.data[0].user_id;
+                handleUserLogin(user_id);
 
                 // Check user type and redirect accordingly
                 if (response.data.data[0].user_type === 'charity') {
@@ -43,6 +47,7 @@ const Login = () => {
                     navigate('/DonerDashBoard'); // Redirect to FoodDonationApp for donor as well (if applicable)
                 }
             }
+            
         } catch (error) {
             console.error('Error logging in:', error);
             setMessage('Error logging in. Please try again.');

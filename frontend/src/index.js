@@ -15,26 +15,37 @@ import SignUpDonor from "./components/SignUp/SignUpDonor/SignUpDonor";
 import SignUpCharity from "./components/SignUp/SignUpCharityy/SignUpCharity";
 import Login from "./components/Login/Login";
 import FoodDonationApp from "./components/CharityDashBoard/FoodDonationApp";
-import DonorDashBoard from "./components/DonerDashBoard/DonerDashBoard";
+import DonorDashBoard from "./components/DonorDashBoard/DonorDashBoard";
 import { FoodProvider } from "./context/FoodContext";
 
 const router = createBrowserRouter([
   {
     path: "/",
-    element: <App></App>,
+    element: (
+      <FoodProvider>
+        <App />  {/* Ensure App component can access context */}
+      </FoodProvider>
+    ),
   },
-  { path: "*", element: <Error></Error> },
-  { path: "/navbar", element: <Navbar></Navbar> },
-  { path: "/HeroSection", element: <HeroSection></HeroSection> },
-  { path: "/HowItWorks", element: <HowItWorks></HowItWorks> },
-  { path: "/Testimonials", element: <Testimonials></Testimonials> },
-  { path: "/CallToAction", element: <CallToAction></CallToAction> },
-  { path: "/AboutUs", element: <AboutUs></AboutUs> },
-  { path: "/LandingPage", element: <LandingPage></LandingPage> },
-  { path: "/SignUpDonor", element: <SignUpDonor></SignUpDonor> },
-  { path: "/SignUpCharity", element: <SignUpCharity></SignUpCharity> },
-  { path: "/Login", element: <Login></Login> },
-  { path: "/FoodDonationApp", element: <FoodDonationApp></FoodDonationApp> },
+  { path: "*", element: <Error /> },
+  { path: "/navbar", element: <Navbar /> },
+  { path: "/HeroSection", element: <HeroSection /> },
+  { path: "/HowItWorks", element: <HowItWorks /> },
+  { path: "/Testimonials", element: <Testimonials /> },
+  { path: "/CallToAction", element: <CallToAction /> },
+  { path: "/AboutUs", element: <AboutUs /> },
+  { path: "/LandingPage", element: <LandingPage /> },
+  { path: "/SignUpDonor", element: <SignUpDonor /> },
+  { path: "/SignUpCharity", element: <SignUpCharity /> },
+  {
+    path: "/Login",
+    element: (
+      <FoodProvider>
+        <Login />
+      </FoodProvider>
+    ),
+  },
+  { path: "/FoodDonationApp", element: <FoodDonationApp /> },
   {
     path: "/DonerDashboard",
     element: (
@@ -44,6 +55,7 @@ const router = createBrowserRouter([
     ),
   },
 ]);
+
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(

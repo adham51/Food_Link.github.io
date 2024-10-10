@@ -7,22 +7,22 @@ export const FoodContext = createContext();
 
 export const FoodProvider = ({ children }) => {
   const [foodList, setFoodList] = useState([]);
-  const [currUserId, setCurrUserID] = useState(7);
+  const [currUserId, setCurrUserID] = useState(null);
 
 
 
-  useEffect(() => {
-    const fetchFoodItems = async () => {
-      try {
-        const response = await axios.get("/available"); // Update this URL as necessary
-        setFoodList(response.data); // Assuming response.data is an array of food items
-      } catch (error) {
-        console.error("Error fetching food items:", error);
-      }
-    };
+  // useEffect(() => {
+  //   const fetchFoodItems = async () => {
+  //     try {
+  //       const response = await axios.get("/available"); // Update this URL as necessary
+  //       setFoodList(response.data); // Assuming response.data is an array of food items
+  //     } catch (error) {
+  //       console.error("Error fetching food items:", error);
+  //     }
+  //   };
 
-    fetchFoodItems();
-  }, []);
+  //   fetchFoodItems();
+  // }, []);
 
   const addFoodItem = async (newFood) => {
     try {
@@ -38,7 +38,7 @@ useEffect(() => {
   const fetchFoodItems = async () => {
       if (currUserId) {
           try {
-              const response = await axios.get(`/doner/${currUserId}`); // Use the user ID
+              const response = await axios.get(`/donor/${currUserId}`); // Use the user ID
               setFoodList(response.data); // Set food list with the user's food items
           } catch (error) {
               console.error("Error fetching food items:", error);
@@ -49,9 +49,18 @@ useEffect(() => {
   fetchFoodItems();
 }, [currUserId]);
 
+  // Function to handle user login
+  const handleUserLogin = (userId) => {
+    setCurrUserID(userId); // Update the current user ID based on login
+  };
+   // Optionally, you can create a logout function to reset the user ID
+   const handleUserLogout = () => {
+    setCurrUserID(null); // Reset user ID on logout
+    setFoodList([]); // Clear food list on logout if desired
+  };
 
   return (
-    <FoodContext.Provider value={{ foodList, addFoodItem, currUserId}}>
+    <FoodContext.Provider value={{ foodList, addFoodItem, currUserId, handleUserLogin, handleUserLogout}}>
       {children}
     </FoodContext.Provider>
   );

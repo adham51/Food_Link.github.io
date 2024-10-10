@@ -3,7 +3,7 @@ import { FoodContext } from "../../context/FoodContext";
 import FoodList from "./FoodList";
 import AddFoodForm from "./AddFoodForm";
 
-import './DonerDashBoard.css'
+import './DonorDashBoard.css'
 
 const DonerDashboard = () => {
   const { foodList } = useContext(FoodContext);
