@@ -54,6 +54,9 @@ const router = createBrowserRouter([
       </FoodProvider>
     ),
   },
+  {basename: "/food-link",
+    
+  }
 ]);
 
 
