@@ -3,7 +3,7 @@ import styles from './AboutUs.module.css';
 
 export default function AboutUs() {
     return (
-        <section id="about" className={styles.aboutUs}>
+        <section id="our-mission" className={styles.aboutUs}>
             <h2>About FoodLink</h2>
             <p>FoodLink's mission is to connect surplus food from donors to charities, reducing food waste and helping those in need.</p>
             <div className={styles.impactStats}>

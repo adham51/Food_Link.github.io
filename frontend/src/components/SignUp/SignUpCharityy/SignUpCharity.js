@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import axios from 'axios';
 import styles from './SignUpCharity.module.css'; // Make sure to create a CSS file for styling
+import Navbar from '../../Header.js/NavBar';
 
 const SignUpCharity = () => {  
     const [formData, setFormData] = useState({
@@ -41,6 +42,8 @@ const SignUpCharity = () => {
 
     return (
         <div className={styles.container}>
+            <Navbar> </Navbar>
+
             <h2>Sign Up as Charity</h2>
             <form onSubmit={handleSubmit} className={styles.form}>
                 <div className={styles.formGroup}>

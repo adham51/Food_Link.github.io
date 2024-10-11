@@ -1,36 +1,134 @@
-/* NavBar.module.css */
+/* Main navbar container */
 .navbar {
-    padding: 15px 20px;
-    background-color: #343a40; /* Dark background */
+    width: 100%; 
+    background-color: #ffffff;
+    padding: 15px 70px;
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+    position: fixed;
+    height: 100px;
+    top: 0;
+    left: 0;
+    z-index: 1000;
+    transition: background-color 0.3s ease;
 }
 
-.navbar-brand {
+/* Container for the nav elements */
+.navContainer {
+    width: 100%;
     display: flex;
+    justify-content: space-between;
     align-items: center;
+}
+
+/* Logo section */
+.navLogo {
+    width: 200px;
+}
+
+.navLogo img {
+    height: 95px;
+    width: auto;
+}
+
+/* Navbar links section */
+.navLinks {
+    width: 60%;
+    display: flex;
+    justify-content: space-around;
+}
+
+/* Navbar list items */
+.nav-item {
+    list-style: none;
+}
+
+.navLink {
+    color: #00615f;
+    text-decoration: none;
+    font-size: 16px;
+    font-weight: 500;
+    padding: 10px 15px;
+    transition: color 0.3s ease, background-color 0.3s ease;
+}
+
+/* Hover and focus states */
+.navLink:hover,
+.navLink:focus {
+    color: #0056b3;
+    background-color: #f0f0f0;
+    border-radius: 5px;
+}
+
+/* Login button styling */
+.loginButton {
+    background-color: #0056b3;
     color: white;
-    margin-right: 10px; 
+    padding: 10px 20px;
+    transition: background-color 0.3s ease;
 }
 
-.navbar-brand img {
-    height: 40px; /* Adjust the size of the logo */
-    width: 40px; /* Ensure to add px here for proper rendering */
-    margin-right: 10px; /* Space between logo and text */
+.loginButton:hover,
+.loginButton:focus {
+    background-color: #004494;
+    color: #ffffff;
 }
 
-.nav-link {
-    color: white;
-    margin: 0 15px; /* Space between links */
+/* Hamburger menu button */
+.hamburger {
+    display: none; /* Hidden by default */
+    flex-direction: column;
+    cursor: pointer;
 }
 
-.nav-link:hover {
-    text-decoration: underline; /* Underline on hover */
+.hamburger div {
+    width: 35px;
+    height: 4px;
+    background-color: #333;
+    margin: 4px 0;
+    transition: 0.4s;
 }
 
-.navbar-collapse {
-    justify-content: flex-end; /* Aligns the nav links to the right */
+/* Responsive styles for smaller screens */
+@media (max-width: 992px) {
+    .navLinks {
+        display: none; /* Initially hidden */
+        flex-direction: column;  /* Stack the links vertically */
+        width: 100%; /* Take up the full width */
+        background-color: white; 
+        position: absolute; /* To make it appear below the navbar */
+        top: 100px; /* Adjust based on navbar height */
+        left: 0;
+        padding: 10px;
+    }
+
+    .navLinks.active {
+        display: flex; 
+    }
+
+    .hamburger {
+        display: flex; 
+    }
+
+    .navbar {
+        padding: 15px 20px;
+    }
+
+    .navLogo {
+        width: 140px;
+    }
 }
-.logo {
-    width: 40px; /* Adjust this size as needed */
-    height: auto; /* Maintain aspect ratio */
-    margin-right: 8px; /* Space between logo and text */
+
+@media (max-width: 576px) {
+    .navContainer {
+        flex-direction: row;
+        justify-content: space-between;
+    }
+
+    .navLogo {
+        margin-bottom: 0;
+    }
+
+    .navLinks {
+        align-items: center;  /* Center the links in mobile view */
+    }
 }

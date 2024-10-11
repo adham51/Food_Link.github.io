@@ -4,7 +4,7 @@ import background from '../../Assets/hero-image.jfif';
 
 export default function HeroSection() {
     return (
-        <section className={styles.hero} style={{ backgroundImage: `url(${background})` }}>
+        <section id = "home" className={styles.hero} style={{ backgroundImage: `url(${background})` }}>
             <div className={styles.heroContent}>
                 <h1>Connecting Surplus Food with Those in Need</h1>
                 <p>Help us make a difference by donating surplus food to charities in need.</p>

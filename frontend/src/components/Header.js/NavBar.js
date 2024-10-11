@@ -1,47 +1,53 @@
+import { useState } from 'react';
 import { Link } from "react-router-dom";
-import logo from "../../Assets/logo.jfif";
+import { HashLink } from "react-router-hash-link";
 import styles from './NavBar.module.css';
+import flLogo from "../../Assets/flLogo.png";
 
 export default function Navbar() {
+  const [isOpen, setIsOpen] = useState(false);
+
+  // Toggles the navigation links on mobile
+  const toggleNav = () => {
+    setIsOpen(!isOpen);
+  };
+
   return (
-    <nav className={`navbar navbar-expand-lg bg-body-tertiary ${styles.navbar}`}>
+    <nav className={`navbar navbar-expand-lg bg-white ${styles.navbar}`}>
       <div className="container-fluid">
-        <Link to={"/LandingPage"} className={`navbar-brand ${styles.navbarBrand}`}>
-          <img src={logo} alt="FoodLink Logo" className={styles.logo} />
-          FoodLink
-        </Link>
-        <button
-          className="navbar-toggler"
-          type="button"
-          data-bs-toggle="collapse"
-          data-bs-target="#navbarNav"
-          aria-controls="navbarNav"
-          aria-expanded="false"
-          aria-label="Toggle navigation"
-        >
-          <span className="navbar-toggler-icon"></span>
-        </button>
-        <div className="collapse navbar-collapse justify-content-end" id="navbarNav">
-          <ul className="navbar-nav">
-            <li className="nav-item">
-              <Link to={"/HeroSection"} className="nav-link">Hero Section</Link>
-            </li>
-            <li className="nav-item">
-              <Link to={"/AboutUs"} className="nav-link">About Us</Link>
-            </li>
-            <li className="nav-item">
-              <Link to={"/HowItWorks"} className="nav-link">How It Works</Link>
-            </li>
-            <li className="nav-item">
-              <Link to={"/Testimonials"} className="nav-link">Testimonials</Link>
-            </li>
-            <li className="nav-item">
-              <Link to={"/CallToAction"} className="nav-link">Call to Action</Link>
-            </li>
-            <li className="nav-item">
-              <Link to={"/Login"} className="nav-link">Login</Link>
-            </li>
-          </ul>
+        <div className={`d-flex justify-content-between align-items-center ${styles.navContainer}`}>
+          <div className={styles.navLogo}>
+            <HashLink smooth to="/#hero" className={`navbar-brand ${styles.navbarBrand}`}>
+              <img src={flLogo} alt="FL Logo" className={styles.logo} />
+            </HashLink>
+          </div>
+
+          {/* Hamburger Menu */}
+          <div className={styles.hamburger} onClick={toggleNav}>
+            <div></div>
+            <div></div>
+            <div></div>
+          </div>
+
+          <div className={`${styles.navLinks} ${isOpen ? styles.active : ''}`}>
+            <ul className={`navbar-nav d-flex justify-content-between align-items-center w-100`}>
+              <li className="nav-item">
+                <HashLink smooth to="/#hero" className={styles.navLink} onClick={toggleNav}>Home</HashLink> 
+              </li>
+              <li className="nav-item">
+                <HashLink smooth to="/#about" className={styles.navLink} onClick={toggleNav}>Our Mission</HashLink>
+              </li>
+              <li className="nav-item">
+                <HashLink smooth to="/#how-it-works" className={styles.navLink} onClick={toggleNav}>How It Works</HashLink>
+              </li>
+              <li className="nav-item">
+                <HashLink smooth to="/#testimonials" className={styles.navLink} onClick={toggleNav}>Testimonials</HashLink>
+              </li>
+              <li className="nav-item">
+                <Link to="/Login" className={`${styles.navLink} ${styles.loginButton}`} onClick={toggleNav}>Login</Link>
+              </li>
+            </ul>
+          </div>
         </div>
       </div>
     </nav>
