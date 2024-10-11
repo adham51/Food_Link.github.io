@@ -23,7 +23,7 @@ const router = createBrowserRouter([
     path: "/",
     element: (
       <FoodProvider>
-        <App />  {/* Ensure App component can access context */}
+        <App /> {/* Ensure App component can access context */}
       </FoodProvider>
     ),
   },
@@ -37,6 +37,7 @@ const router = createBrowserRouter([
   { path: "/LandingPage", element: <LandingPage /> },
   { path: "/SignUpDonor", element: <SignUpDonor /> },
   { path: "/SignUpCharity", element: <SignUpCharity /> },
+  { path: "/food-link", element: <LandingPage /> },
   {
     path: "/Login",
     element: (
@@ -54,11 +55,7 @@ const router = createBrowserRouter([
       </FoodProvider>
     ),
   },
-  {basename: "/food-link",
-    
-  }
 ]);
-
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
