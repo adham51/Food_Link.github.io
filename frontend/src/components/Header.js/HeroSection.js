@@ -1,16 +1,21 @@
 import React from 'react';
+import { Link } from 'react-router-dom'; // Import Link for navigation
 import styles from './HeroSection.module.css';
-import background from '../../Assets/hero-image.jfif'; 
+import background from '../../Assets/Home-img.png'; // Your background image path
 
 export default function HeroSection() {
     return (
-        <section id = "home" className={styles.hero} style={{ backgroundImage: `url(${background})` }}>
+        <section id="home" className={styles.hero} style={{ backgroundImage: `url(${background})` }}>
+            <div className={styles.heroOverlay}></div> {/* Overlay to darken background */}
             <div className={styles.heroContent}>
-                <h1>Connecting Surplus Food with Those in Need</h1>
-                <p>Help us make a difference by donating surplus food to charities in need.</p>
-                <div className={styles.ctaButtons}>
-                    <button className="btn-primary">Get Started</button>
-                    <button className="btn-secondary">Learn More</button>
+                <h1>Share more, <br />waste less!</h1> {/* Centered large text */}
+                <div className={styles.buttonGroup}>
+                    <Link to="/SignUpDonor" className={styles.link}>
+                        <button className={styles.btnPrimary}>Sign Up as Donor</button>
+                    </Link>
+                    <Link to="/SignUpCharity" className={styles.link}>
+                        <button className={styles.btnSecondary}>Sign Up as Charity</button>
+                    </Link>
                 </div>
             </div>
         </section>

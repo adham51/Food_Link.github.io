@@ -42,21 +42,26 @@
     list-style: none;
 }
 
+/* Remove padding and background color */
 .navLink {
     color: #00615f;
     text-decoration: none;
     font-size: 16px;
     font-weight: 500;
-    padding: 10px 15px;
-    transition: color 0.3s ease, background-color 0.3s ease;
+    padding: 0; /* Remove padding */
+    background-color: transparent; /* Ensure background is transparent */
+    /* transition: color 0.3s ease; */
+    outline: none; /* Remove default browser focus outline */
 }
 
-/* Hover and focus states */
-.navLink:hover,
+/* Remove the outline on focus */
 .navLink:focus {
+    outline: none; /* Completely remove the rectangle (outline) */
+}
+
+/* Hover and focus states without background color or border radius */
+.navLink:hover {
     color: #0056b3;
-    background-color: #f0f0f0;
-    border-radius: 5px;
 }
 
 /* Login button styling */

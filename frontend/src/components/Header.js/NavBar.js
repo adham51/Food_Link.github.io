@@ -30,20 +30,20 @@ export default function Navbar() {
           </div>
 
           <div className={`${styles.navLinks} ${isOpen ? styles.active : ''}`}>
-            <ul className={`navbar-nav d-flex justify-content-between align-items-center w-100`}>
-              <li className="nav-item">
+            <ul className="navbar-nav d-flex justify-content-between align-items-center w-100">
+              <li className={styles.navItem}>
                 <HashLink smooth to="/#hero" className={styles.navLink} onClick={toggleNav}>Home</HashLink> 
               </li>
-              <li className="nav-item">
+              <li className={styles.navItem}>
                 <HashLink smooth to="/#about" className={styles.navLink} onClick={toggleNav}>Our Mission</HashLink>
               </li>
-              <li className="nav-item">
+              <li className={styles.navItem}>
                 <HashLink smooth to="/#how-it-works" className={styles.navLink} onClick={toggleNav}>How It Works</HashLink>
               </li>
-              <li className="nav-item">
+              <li className={styles.navItem}>
                 <HashLink smooth to="/#testimonials" className={styles.navLink} onClick={toggleNav}>Testimonials</HashLink>
               </li>
-              <li className="nav-item">
+              <li className={styles.navItem}>
                 <Link to="/Login" className={`${styles.navLink} ${styles.loginButton}`} onClick={toggleNav}>Login</Link>
               </li>
             </ul>

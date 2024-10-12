@@ -1,56 +1,95 @@
 .hero {
-    height: 100vh;
+    height: 90vh; /* Full viewport height */
+    width: 100vw; /* Full viewport width */
+    position: relative;
+    display: flex;
+    justify-content: center; /* Center horizontally */
+    align-items: center; /* Center vertically */
+    overflow-x: hidden; /* Hide overflow on the x-axis */
+    top: 100px;
+    left: 0px;
+}
+
+.hero::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-image: url('../../Assets/Home-img.png'); /* Your image path */
     background-size: cover;
     background-position: center;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    color: white;
+    background-repeat: no-repeat;
+    filter: blur(1px); /* Adjust the blur value here */
+    z-index: 0;
+}
+
+.heroOverlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgba(0, 0, 0, 0.42); /* Dark overlay */
+    z-index: 1; /* Ensure the overlay is above the blurred background */
 }
 
 .heroContent {
-    text-align: center;
+    position: relative;
+    z-index: 2; /* Ensure content is above everything else */
+    text-align: center; /* Center the text */
+    color: white; /* Ensure the text is visible */
 }
 
-.hero h1 {
-    font-size: 3rem;
-    margin-bottom: 15px;
-}
-
-.hero p {
-    font-size: 1.5rem;
+.heroContent h1 {
+    font-size: 70px; /* Large font size */
     margin-bottom: 20px;
+    font-weight: bold;
+    color: white;
 }
 
-.ctaButtons {
+.buttonGroup {
     display: flex;
-    justify-content: center; /* Center the button container */
+    justify-content: center; /* Center the buttons */
+    gap: 20px; /* Space between buttons */
+    margin-top: 20px; /* Add spacing from the text */
 }
 
-.ctaButtons button {
-    margin: 0 10px; /* Space between buttons */
-    padding: 10px 20px; /* Add padding for better button size */
-    font-size: 1rem; /* Make the font size consistent */
-    cursor: pointer; /* Change cursor on hover */
-}
-
-/* Optional: Add styles for button hover effects */
-.btn-primary {
-    background-color: #007bff; /* Bootstrap primary color */
-    border: none;
+/* Primary Button Style */
+.btnPrimary {
+    background-color: #8e7754; /* Similar to learnMorebtn */
+    padding: 18px;
+    font-size: 16px;
+    width: 200px;
     color: white;
-}
-
-.btn-primary:hover {
-    background-color: #0056b3; /* Darker shade for hover */
-}
-
-.btn-secondary {
-    background-color: #6c757d; /* Bootstrap secondary color */
+    font-weight: bold;
+    border-radius: 5px;
     border: none;
-    color: white;
+    cursor: pointer;
+    transition: background-color 0.4s, color 0.4s; /* Smooth transition */
 }
 
-.btn-secondary:hover {
-    background-color: #5a6268; /* Darker shade for hover */
+.btnPrimary:hover {
+    background-color: white;
+    color: black; /* Change to white background and black text on hover */
+}
+
+/* Secondary Button Style */
+.btnSecondary {
+    background-color: transparent;
+    padding: 18px;
+    font-size: 16px;
+    width: 200px;
+    color: white;
+    font-weight: bold;
+    border-radius: 5px;
+    border: 2px solid white; /* Similar to contactbtn */
+    cursor: pointer;
+    transition: background-color 0.4s, color 0.4s; /* Smooth transition */
+}
+
+.btnSecondary:hover {
+    background-color: white;
+    color: black; /* Inverse colors on hover */
 }
