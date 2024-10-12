@@ -3,7 +3,7 @@
     width: 100%; 
     background-color: #ffffff;
     padding: 15px 70px;
-    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+    box-shadow: 0px 4px 13px rgba(0, 0, 0, 0.2);
     position: fixed;
     height: 100px;
     top: 0;
@@ -22,12 +22,16 @@
 
 /* Logo section */
 .navLogo {
-    width: 200px;
+    width: 160px;
 }
 
 .navLogo img {
-    height: 95px;
+    height: 70px;
     width: auto;
+    position: absolute;
+    /* right: 100px; */
+    top: 16px;
+    left: 30px;
 }
 
 /* Navbar links section */

@@ -1,49 +1,152 @@
 .aboutUs {
     padding: 60px 20px;
-    text-align: center;
-    background-color: #f8f9fa; /* Light background for contrast */
-    border-radius: 10px; /* Rounded corners for a softer look */
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1); /* Subtle shadow for depth */
+    width: 100vw;
+    height: 1000px;
+    background-color: #f9f3f0;
+    position: relative;
 }
 
-.aboutUs h2 {
+/* Our Mission Title */
+.missionTitle {
+    display: flex;
+    align-items: center;
+    margin-bottom: 30px;
+    position: relative;
+    text-align: left;
+}
+
+.titleRectangle {
+    background-color: #00615f;
+    width: 100px;
+    height: 5px;
+    position: absolute;
+    left: -30px;
+}
+
+.missionTitle h2 {
+    margin-left: 90px;
+    color: #00615f;
     font-size: 2.5rem;
-    color: #333;
-    margin-bottom: 20px;
-    font-family: 'Arial', sans-serif; /* Modern font */
+    text-transform: uppercase;
+    font-family: 'Arial', sans-serif;
 }
 
-.aboutUs p {
-    font-size: 1.2rem;
-    color: #666;
+.missionText p {
+    color: #00615f;
+    font-size: 30px;
+    text-align: center;
     max-width: 800px;
     margin: auto;
-    line-height: 1.5; /* Better readability */
+    font-weight: 400;
+    line-height: 1.5;
 }
 
-.impactStats {
-    display: flex; /* Flexbox for responsive layout */
-    justify-content: center; /* Center the stats */
-    margin-top: 40px; /* Space above stats */
+/* Top Text: Why Use FoodLink */
+.topText {
+    position: absolute;
+    top: 500px; /* Start much lower initially */
+    width: 100%;
+    text-align: center;
+    opacity: 0;
+    transform: translateY(200px); /* Start from further below */
+    transition: opacity 1s ease, transform 2s ease-in-out;
 }
 
-.stat {
-    background-color: #fff; /* White background for stats */
-    border-radius: 8px; /* Rounded corners */
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); /* Subtle shadow */
-    padding: 20px; /* Padding inside each stat box */
-    margin: 0 20px; /* Space between stat boxes */
-    flex: 1; /* Equal size for all stat boxes */
-    max-width: 200px; /* Limit the width of each stat box */
+.topText h2 {
+    color: #00615f;
+    font-size: 2.5rem;
+    font-family: 'Arial', sans-serif;
+    margin: 0;
+    font-weight: bold;
+    margin-bottom: 10px;
 }
 
-.stat h3 {
-    font-size: 2rem; /* Slightly larger font size */
-    color: #007bff; /* Bootstrap primary color */
-    margin-bottom: 10px; /* Space between number and label */
+.topText .topTextFL {
+    color: rgb(255, 121, 115);
+    font-size: 70px;
+    font-weight: bold;
+    font-family: 'konga pro', sans-serif;
 }
 
-.stat p {
-    font-size: 1rem; /* Smaller font for description */
-    color: #666;
+/* Left Text: Help the environment by reducing food waste */
+.textLeft {
+    position: absolute;
+    left: 170px;
+    top: 500px; /* Start much lower initially */
+    max-width: 300px;
+    text-align: left;
+    opacity: 0;
+    transform: translateY(400px); /* Start lower to rise up properly */
+    transition: opacity 1s ease, transform 2.8s ease-in-out;
+}
+
+.textLeft p {
+    font-size: 24px;
+    color: #00615f;
+    font-weight: bold;
+    display: flex;
+    align-items: center;
+}
+
+.textLeft i {
+    font-size: 24px;
+    margin-right: 10px; /* Space between icon and text */
+    color: #00615f;
+}
+
+/* Right Text: Rescue food near you */
+.textRight {
+    position: absolute;
+    right: 200px;
+    top: 500px; /* Start much lower initially */
+    max-width: 300px;
+    text-align: right;
+    opacity: 0;
+    transform: translateY(300px); /* Start lower to rise up properly */
+    transition: opacity 1s ease, transform 2.8s ease-in-out;
+}
+
+.textRight p {
+    font-size: 24px;
+    color: #00615f;
+    font-weight: bold;
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+}
+
+.textRight i {
+    font-size: 24px;
+    margin-left: 10px; /* Space between text and icon */
+    color: #00615f;
+}
+
+/* Image Container and Image */
+.imageContainer {
+    margin-top: 200px;
+    text-align: center;
+}
+
+.missionImage {
+    width: 550px;
+    height: auto;
+    opacity: 0;
+    transform: translateY(200px); /* Start slightly below for upward animation */
+    transition: opacity 1s ease, transform 2.5s ease-in-out;
+}
+
+.revealImage {
+    opacity: 1;
+    transform: translateY(-20px); /* Image slides up and appears */
+}
+
+/* Reveal Animation for Text */
+.revealText {
+    opacity: 1;
+    transform: translateY(-200px); /* Text slides up and appears in the correct position */
+}
+
+.revealRightLeft {
+    opacity: 1;
+    transform: translateY(200px); /* Text slides up and appears in the correct position */
 }

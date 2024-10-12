@@ -2,7 +2,7 @@ import { useState } from 'react';
 import { Link } from "react-router-dom";
 import { HashLink } from "react-router-hash-link";
 import styles from './NavBar.module.css';
-import flLogo from "../../Assets/flLogo.png";
+import flLogo from "../../Assets/logoidea1.png";
 
 export default function Navbar() {
   const [isOpen, setIsOpen] = useState(false);
@@ -13,7 +13,7 @@ export default function Navbar() {
   };
 
   return (
-    <nav className={`navbar navbar-expand-lg bg-white ${styles.navbar}`}>
+    <nav className={`navbar navbar-expand-lg ${styles.navbar}`}>
       <div className="container-fluid">
         <div className={`d-flex justify-content-between align-items-center ${styles.navContainer}`}>
           <div className={styles.navLogo}>
