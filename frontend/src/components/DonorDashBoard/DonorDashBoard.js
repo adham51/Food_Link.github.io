@@ -2,6 +2,7 @@ import React, { useContext, useEffect, useState } from "react";
 import { FoodContext } from "../../context/FoodContext";
 import FoodList from "./FoodList";
 import AddFoodForm from "./AddFoodForm";
+import Navbar from "../Header.js/NavBar";
 
 import './DonorDashBoard.css'
 
@@ -19,6 +20,9 @@ const DonerDashboard = () => {
 
   return (
     <div className="doner-dashboard container-fluid">
+      <Navbar /> 
+      <br/><br/><br/><br/><br/><br/>
+
       <h1 className="text-center mb-4">Donor Dashboard</h1>
       <div className="row"><div className="text-end mt-3" style={{marginRight:"15%"}}>
         <button className="btn btn-success toggle-add-food-button" onClick={toggleForm}>

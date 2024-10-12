@@ -8,7 +8,7 @@
 
 .footerContent {
     display: flex; /* Flexbox layout for contact and social sections */
-    justify-content: space-between; /* Space between the two sections */
+    justify-content: space-around; /* Space between the two sections */
     max-width: 1200px; /* Max width for larger screens */
     margin: 0 auto; /* Center the footer content */
 }

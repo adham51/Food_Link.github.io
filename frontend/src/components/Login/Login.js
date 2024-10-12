@@ -3,6 +3,7 @@ import axios from 'axios';
 import { useNavigate } from 'react-router-dom'; // Import useNavigate
 import styles from './Login.module.css'; // Make sure to create a CSS file for styling
 import {FoodContext} from '../../context/FoodContext'
+import Navbar from '../Header.js/NavBar';
 
 
 const Login = () => {
@@ -56,6 +57,8 @@ const Login = () => {
 
     return (
         <div className={styles.container}>
+                <Navbar></Navbar>
+
             
             <h2>Login</h2>
             <form onSubmit={handleSubmit} className={styles.form}>

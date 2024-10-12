@@ -35,6 +35,8 @@ const SignUpDonor = () => {
 
     return (
         <div className={styles.container}>
+            <Navbar></Navbar>
+
             <h2>Sign Up as Donor</h2>
             <form onSubmit={handleSubmit} className={styles.form}>
                 <div className={styles.formGroup}>

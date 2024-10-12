@@ -1,7 +1,7 @@
 import React from "react";
 import ReactDOM from "react-dom/client";
 import "./index.css";
-import App from "./App";
+import App from "./App";  // Your main App component
 import Navbar from "./components/Header.js/NavBar";
 import HeroSection from "./components/Header.js/HeroSection";
 import HowItWorks from "./components/Header.js/HowItWorks";
@@ -18,6 +18,7 @@ import FoodDonationApp from "./components/CharityDashBoard/FoodDonationApp";
 import DonorDashBoard from "./components/DonorDashBoard/DonorDashBoard";
 import { FoodProvider } from "./context/FoodContext";
 
+// Defining routes for navigation using React Router
 const router = createBrowserRouter([
   {
     path: "/",
@@ -27,7 +28,7 @@ const router = createBrowserRouter([
       </FoodProvider>
     ),
   },
-  { path: "*", element: <Error /> },
+  { path: "*", element: <Error /> },  // Handle unmatched routes
   { path: "/navbar", element: <Navbar /> },
   { path: "/HeroSection", element: <HeroSection /> },
   { path: "/HowItWorks", element: <HowItWorks /> },
