@@ -10,7 +10,6 @@ import './DonorDashBoard.css'
 const DonerDashboard = () => {
   const { foodList } = useContext(FoodContext);
   const [showForm, setShowForm] = useState(false);
-  const [charityInfo, setCharityInfo] = useState(null);
 
 
 
@@ -18,21 +17,11 @@ const DonerDashboard = () => {
     setShowForm(!showForm);
   };
 
-  // const handleShowCharityInfo = (requestId) => {
-  //   axios.get(`/charityinfo/${requestId}`)
-  //     .then(response => {
-  //       setCharityInfo(response.data); // Set the charity info data in state
-  //     })
-  //     .catch(error => {
-  //       console.error("There was an error fetching the charity info!", error);
-  //     });
-  // };
-
 
   return (
     <div className="doner-dashboard container-fluid">
       <Navbar /> 
-      <br/><br/><br/><br/><br/><br/>
+      <br/>
 
       <h1 className="text-center mb-4">Donor Dashboard</h1>
       <div className="row"><div className="text-end mt-3" style={{marginRight:"15%"}}>
@@ -55,14 +44,6 @@ const DonerDashboard = () => {
         )}
       </div>
       
-
-      {/* {charityInfo && ( // Conditionally render charity info if it's available
-        <div className="charity-info">
-          <h3>Charity Information</h3>
-          <p><strong>Name:</strong> test</p>
-          <p><strong>Email:</strong> test</p>
-        </div>
-      )} */}
     </div>
   );
 };

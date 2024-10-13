@@ -224,6 +224,24 @@ user.post('/forgotpassword',async(req,res)=>{
 });
 
 
+// request.routes.js
+user.get('/donorinfo/:donorId', (req, res) => {
+    const donorId = req.params.donorId;
+    
+    const query = `
+        SELECT name
+        FROM users
+        WHERE user_id = ?
+    `;
+
+    db.query(query, [donorId], (err, data) => {
+        if (err) {
+            res.status(500).json({ message: 'Error fetching donor info' });
+        } else {
+            res.json(data[0]); // Assuming you want the first result
+        }
+    });
+});
 
 
 

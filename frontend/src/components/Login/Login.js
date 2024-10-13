@@ -1,13 +1,10 @@
-import React, { useContext, useState } from 'react';
+import React, { useState } from 'react';
 import axios from 'axios';
 import { useNavigate } from 'react-router-dom'; // Import useNavigate
 import styles from './Login.module.css'; // Make sure to create a CSS file for styling
-import {FoodContext} from '../../context/FoodContext'
-import Navbar from '../Header.js/NavBar';
 
 
 const Login = () => {
-    const { handleUserLogin } = useContext(FoodContext); // Access context
     const [formData, setFormData] = useState({
         email: '',
         password: '',
@@ -29,36 +26,30 @@ const Login = () => {
         try {
             const response = await axios.post('/login', formData);
             setMessage(response.data.message);
-
+    
             if (response.data.token) {
                 localStorage.setItem('token', response.data.token); // Save token to local storage
-                const user_id = response.data.data[0].user_id;
-                handleUserLogin(user_id);
-
+                localStorage.setItem('charityName', response.data.data[0].name); // Save charity/user name to local storage
+    
                 // Check user type and redirect accordingly
                 if (response.data.data[0].user_type === 'charity') {
                     navigate('/FoodDonationApp'); // Redirect to FoodDonationApp for charity
                 } 
                 else if (response.data.data[0].user_type === 'donor') {
                     navigate('/DonerDashBoard'); 
-                }
-                else {
-                    // Optionally handle other user types
-                    // navigate('/SomeOtherComponent'); 
-                    navigate('/DonerDashBoard'); // Redirect to FoodDonationApp for donor as well (if applicable)
+                } else {
+                    navigate('/FoodDonationApp'); // Redirect to FoodDonationApp for others (if applicable)
                 }
             }
-            
         } catch (error) {
             console.error('Error logging in:', error);
             setMessage('Error logging in. Please try again.');
         }
     };
+    
 
     return (
         <div className={styles.container}>
-                <Navbar></Navbar>
-
             
             <h2>Login</h2>
             <form onSubmit={handleSubmit} className={styles.form}>

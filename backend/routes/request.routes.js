@@ -134,7 +134,6 @@ request.get('/all',  (req, res) => {
 
 });
 
-module.exports = request;
 
 // Route to get charity info using food_id
 request.get('/charityinfo/food/:foodId', (req, res) => {
@@ -156,3 +155,6 @@ request.get('/charityinfo/food/:foodId', (req, res) => {
         }
     });
 });
+
+
+module.exports = request;

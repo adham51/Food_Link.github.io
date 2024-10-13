@@ -4,7 +4,6 @@ import "./FoodItem.css"; // For additional custom styling
 
 export default function FoodItem({ food, index }) {
   const [charityInfo, setCharityInfo] = useState(null);
-  console.log(food.food_id);
 
   useEffect(() => {
     // Fetch charity info if the food is claimed
