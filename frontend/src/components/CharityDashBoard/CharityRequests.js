@@ -12,7 +12,13 @@ export default function CharityRequests() {
         const fetchRequests = async () => {
             try {
                 const charityName = localStorage.getItem('charityName'); // Get the charityName
-                let charityId = localStorage.getItem('charityId'); // Check if charityId is already stored
+                const token = localStorage.getItem('token'); // Assuming you are storing the JWT token after login
+                const charityResponse = await axios.get('/auth/me', {
+                    headers: {
+                        Authorization: `${token}`, // Pass the token to the backend
+                    },
+                });
+                const charityId = charityResponse.data.user_id;
 
                 // If charityId is not in localStorage, fetch it using charityName
                 if (!charityId) {

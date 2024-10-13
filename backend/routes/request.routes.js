@@ -63,18 +63,47 @@ request.put('/updaterequest/:requestId', (req, res) => {
         
         db.query(`UPDATE requests SET status = '${status}' WHERE request_id = ${requestId}`,(err,data)=>{
             if(err) {
+                res.json({ message: 'Error' });
+            }
+            else if(data.affectedRows === 0)
+            {
                 res.json({ message: 'Request not found' });
             }
             else{
                 res.json({ message: 'Request status updated successfully' });
             }
     
-            res.json({ message: 'Request status updated successfully' });
         });
 
         
     
 });
+
+// request.put('/updaterequestcancel/:requestId', (req, res) => {
+    
+//     const  requestId  = req.params.requestId;
+    
+
+    
+//     db.query(`UPDATE requests SET status = 'cancelled' WHERE request_id = ${requestId}`,(err,data)=>{
+//         if(err) {
+//             res.json({ message: 'Error' });
+//         }
+//         else if(data.affectedRows === 0){
+//             res.json({ message: 'Request not found' });
+//         }
+//         else
+//         {
+//             res.json({ message: 'Request cancelled successfully' });
+//         }
+        
+//     });
+
+    
+
+// });
+
+
 
 // Delete a request (e.g., charity cancels their request)
 request.delete('/deleterequest/:requestId', (req, res) => {
@@ -186,6 +215,29 @@ request.get('/charityid/:charityName',  (req, res) => {
         }
     });
 
+});
+
+
+// Route to get the logged-in charity's details
+request.get('/auth/me', authenticateToken, (req, res) => {
+    const userId = req.user.user_id;
+    const userType = req.user.user_type;
+
+    if (userType !== 'charity') {
+         res.json({ message: 'Access denied. Only charities can access this information.' });
+    }
+
+    // Return user information (you can customize this to return specific details)
+    db.query('SELECT user_id, name FROM users WHERE user_id = ?', [userId], (err, result) => {
+        if (err) {
+             res.json({ message: 'Error fetching user data' });
+        }
+        else
+        {
+            res.json(result[0]);
+        }
+        
+    });
 });
 
 
