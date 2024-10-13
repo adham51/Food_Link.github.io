@@ -3,20 +3,31 @@ import { FoodContext } from "../../context/FoodContext";
 import FoodList from "./FoodList";
 import AddFoodForm from "./AddFoodForm";
 import Navbar from "../Header.js/NavBar";
+import axios from 'axios'
 
 import './DonorDashBoard.css'
 
 const DonerDashboard = () => {
   const { foodList } = useContext(FoodContext);
   const [showForm, setShowForm] = useState(false);
-
-
+  const [charityInfo, setCharityInfo] = useState(null);
 
 
 
   const toggleForm = () => {
     setShowForm(!showForm);
   };
+
+  // const handleShowCharityInfo = (requestId) => {
+  //   axios.get(`/charityinfo/${requestId}`)
+  //     .then(response => {
+  //       setCharityInfo(response.data); // Set the charity info data in state
+  //     })
+  //     .catch(error => {
+  //       console.error("There was an error fetching the charity info!", error);
+  //     });
+  // };
+
 
   return (
     <div className="doner-dashboard container-fluid">
@@ -45,7 +56,13 @@ const DonerDashboard = () => {
       </div>
       
 
-      
+      {/* {charityInfo && ( // Conditionally render charity info if it's available
+        <div className="charity-info">
+          <h3>Charity Information</h3>
+          <p><strong>Name:</strong> test</p>
+          <p><strong>Email:</strong> test</p>
+        </div>
+      )} */}
     </div>
   );
 };

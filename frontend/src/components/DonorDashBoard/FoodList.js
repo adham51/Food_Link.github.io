@@ -1,5 +1,6 @@
 import React from 'react';
 import FoodItem from './FoodItem';
+import './FoodItem.css'
 const FoodList = ({ foodList }) => {
     return (
         <div className="row">
