@@ -157,4 +157,41 @@ request.get('/charityinfo/food/:foodId', (req, res) => {
 });
 
 
+// Get name and email of the charity who made a specific request
+request.get('/charityinfo/:requestId',  (req, res) => {
+    const  requestId  = req.params.requestId;
+    db.query(`select users.name, users.email from users inner join requests on users.user_id = requests.charity_id where requests.request_id = ${requestId}`,(err,data)=>{
+        if(err) {
+            res.json({ message: 'Error' });
+        }
+        else{
+            res.json(data);
+        }
+    });
+
+});
+
+
+// Get total meals donated (total number of fulfilled requests)
+request.get('/request/totalmeals', (req, res) => {
+    db.query(`SELECT COUNT(*) as totalMeals FROM requests WHERE status = 'fulfilled'`, (err, data) => {
+        if (err) {
+            res.json({ message: 'Error fetching meals count' });
+        } else {
+            res.json({ totalMeals: data[0].totalMeals });
+        }
+    });
+});
+
+// Get total number of charities helped (unique charities with fulfilled requests)
+request.get('/request/totalcharities', (req, res) => {
+    db.query(`SELECT COUNT(DISTINCT charity_id) as totalCharities FROM requests WHERE status = 'fulfilled'`, (err, data) => {
+        if (err) {
+            res.json({ message: 'Error fetching charities count' });
+        } else {
+            res.json({ totalCharities: data[0].totalCharities });
+        }
+    });
+});
+
 module.exports = request;
