@@ -134,29 +134,6 @@ request.get('/all',  (req, res) => {
 
 });
 
-
-// Route to get charity info using food_id
-request.get('/charityinfo/food/:foodId', (req, res) => {
-    const foodId = req.params.foodId;
-
-    const query = `
-        SELECT users.name, users.email, requests.request_id
-        FROM users
-        INNER JOIN requests ON users.user_id = requests.charity_id
-        WHERE requests.food_id = ?  -- Match the food_id in the requests table
-    `;
-
-    db.query(query, [foodId], (err, data) => {
-        if (err) {
-            res.status(500).json({ message: 'Error fetching charity info' });
-            console.log(err);
-        } else {
-            res.status(200).json(data);  
-        }
-    });
-});
-
-
 // Get name and email of the charity who made a specific request
 request.get('/charityinfo/:requestId',  (req, res) => {
     const  requestId  = req.params.requestId;
@@ -193,5 +170,24 @@ request.get('/request/totalcharities', (req, res) => {
         }
     });
 });
+
+// Get the charity id by charity name
+request.get('/charityid/:charityName',  (req, res) => {
+    const  charityName  = req.params.charityName;
+    db.query(`select user_id from users where name = '${charityName}'`,(err,data)=>{
+        if(err) {
+            res.json({ message: 'Error' });
+        }
+        else if(data.length === 0){
+            res.json({ message: 'Charity not found' });
+        }
+        else{
+            res.json(data[0]);
+        }
+    });
+
+});
+
+
 
 module.exports = request;

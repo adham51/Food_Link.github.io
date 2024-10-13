@@ -1,0 +1,59 @@
+/* CharityRequests.module.css */
+
+.container {
+    padding: 20px;
+    background-color: #f9f9f9; /* Light background for contrast */
+    border-radius: 8px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+h1 {
+    font-size: 24px;
+    margin-bottom: 20px;
+    color: #333; /* Darker color for header */
+}
+
+.requestList {
+    list-style-type: none; /* Remove default list styling */
+    padding: 0;
+}
+
+.requestItem {
+    display: flex;
+    justify-content: space-between; /* Align items on both sides */
+    align-items: center;
+    background-color: #ffffff; /* White background for each request */
+    border: 1px solid #ddd; /* Light border for separation */
+    padding: 15px;
+    margin-bottom: 10px; /* Space between requests */
+    border-radius: 5px;
+    transition: box-shadow 0.2s ease; /* Smooth transition for hover effect */
+}
+
+.requestItem:hover {
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Shadow on hover */
+}
+
+.cancelButton {
+    background-color: #ff4c4c; /* Red background for cancel button */
+    color: white; /* White text for contrast */
+    border: none;
+    padding: 10px 15px;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s; /* Smooth background color change */
+}
+
+.cancelButton:hover {
+    background-color: #ff1a1a; /* Darker red on hover */
+}
+
+.successMessage {
+    color: #4CAF50; /* Green for success messages */
+    margin-bottom: 20px; /* Space below success message */
+}
+
+.errorMessage {
+    color: #ff4c4c; /* Red for error messages */
+    margin-bottom: 20px; /* Space below error message */
+}

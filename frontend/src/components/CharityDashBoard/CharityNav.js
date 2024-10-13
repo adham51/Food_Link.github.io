@@ -1,7 +1,7 @@
 import React from 'react';
 import styles from './CharityNav.module.css';
 
-const CharityNav = ({ charityName, onLogout, onViewFoodList }) => {
+const CharityNav = ({ charityName, onLogout, onViewFoodList, onViewRequests }) => {
     return (
         <nav className={styles.navbar}>
             <div className={styles.navLeft}>
@@ -9,6 +9,7 @@ const CharityNav = ({ charityName, onLogout, onViewFoodList }) => {
             </div>
             <div className={styles.navRight}>
                 <button onClick={onViewFoodList}>Available Food List</button>
+                <button onClick={onViewRequests}>Your Requests</button> {/* Add this button */}
                 <button onClick={onLogout}>Logout</button>
             </div>
         </nav>
