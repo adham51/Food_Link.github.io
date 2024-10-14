@@ -18,7 +18,7 @@ export default function CharityRequests() {
                         Authorization: `${token}`, // Pass the token to the backend
                     },
                 });
-                const charityId = charityResponse.data.user_id;
+                let charityId = charityResponse.data.user_id;
 
                 // If charityId is not in localStorage, fetch it using charityName
                 if (!charityId) {
@@ -49,7 +49,19 @@ export default function CharityRequests() {
                     })
                 );
 
+                const requestsWithDonorDetails = await Promise.all(
+                    requestsWithFoodDetails.map(async (request) => {
+                        const donorResponse = await axios.get(`/donorinfo/${request.charity_id}`);
+                        return {
+                            ...request,
+                            donor_name: donorResponse.data.name,
+                            donor_email: donorResponse.data.email,
+                        };
+                    })
+                );
+
                 setRequests(requestsWithFoodDetails);
+                setRequests(requestsWithDonorDetails);
                 setLoading(false);
             } catch (error) {
                 setError('Error fetching requests.');
@@ -95,6 +107,8 @@ export default function CharityRequests() {
                             <div>
                                 <strong>Food Name:</strong> {request.food_name}
                                 <p><strong>Quantity:</strong> {request.quantity}</p>
+                                <p><strong>Donor Name:</strong> {request.donor_name}</p>
+                                <p><strong>Donor Email:</strong> {request.donor_email}</p>
                                 <p><strong>Status:</strong> {request.status}</p>
                             </div>
                             {request.status !== 'cancelled' && (

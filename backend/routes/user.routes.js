@@ -229,7 +229,7 @@ user.get('/donorinfo/:donorId', (req, res) => {
     const donorId = req.params.donorId;
     
     const query = `
-        SELECT name
+        SELECT name, email
         FROM users
         WHERE user_id = ?
     `;

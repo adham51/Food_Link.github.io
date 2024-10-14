@@ -5,9 +5,8 @@
     display: flex;
     justify-content: center; 
     align-items: center; 
-    overflow-x: hidden; /* Hide overflow on the x-axis */
-    /* top: 100px; */
     left: 0px;
+    margin-top: 100px;
 }
 
 .hero::before {
@@ -117,5 +116,4 @@
     margin-bottom: 30px; /* Space below the subheadline */
     text-transform: uppercase;
 }
-
 

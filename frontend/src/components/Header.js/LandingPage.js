@@ -1,12 +1,13 @@
 import React from 'react';
-import Navbar from './NavBar';  // Assuming Navbar is already created
-import HeroSection from './HeroSection';  // Import all the components
+import Navbar from './NavBar';  
+import HeroSection from './HeroSection';  
 import AboutUs from './AboutUs';
 import HowItWorks from './HowItWorks';
 import Testimonials from './Testimonials';
 import CallToAction from './CallToAction';
 import Footer from '../Footer/Footer';
-import styles from './LandingPage.module.css';  // Import the CSS
+import styles from './LandingPage.module.css';  
+import DownloadApp from './DownloadApp';
 
 export default function LandingPage() {
     return (
@@ -30,6 +31,8 @@ export default function LandingPage() {
                 <div id="testimonials">
                     <Testimonials />
                 </div>
+
+                <DownloadApp />
 
                 <div id="call-to-action">
                     <CallToAction />

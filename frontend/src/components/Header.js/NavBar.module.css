@@ -70,15 +70,16 @@
 
 /* Login button styling */
 .loginButton {
-    background-color: #0056b3;
+    background-color: #00615f;
     color: white;
     padding: 10px 20px;
     transition: background-color 0.3s ease;
+    border-radius: 7px;
 }
 
 .loginButton:hover,
 .loginButton:focus {
-    background-color: #004494;
+    background-color: #098d8b;
     color: #ffffff;
 }
 

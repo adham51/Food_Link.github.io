@@ -1,79 +1,122 @@
-.footer {
-    background-color: #343a40; /* Dark background */
-    color: white; /* White text color */
-    padding: 60px 20px; /* Increased padding around the footer */
-    text-align: center; /* Centered text */
-    width: 100%; /* Full width */
+/* Wrapper for the footer */
+.footerWrapper {
+    width: 100%;
 }
 
-.footerContent {
-    display: flex; /* Flexbox layout for contact and social sections */
-    justify-content: space-around; /* Space between the two sections */
-    max-width: 1200px; /* Max width for larger screens */
-    margin: 0 auto; /* Center the footer content */
+/* Top Layer (lighter background) */
+.footerTop {
+    background-color: #00615f;
+    padding: 40px 20px;
+    display: flex;
+    justify-content: space-between; /* Space out the sections evenly */
+    align-items: center; /* Center vertically */
 }
 
+/* Left Section */
+.leftSection {
+    flex: 1;
+    text-align: center; /* Center content horizontally */
+}
+
+.logo {
+    width: 350px;
+    margin-bottom: 20px;
+    border-radius: 7px;
+}
+
+/* Center Section */
+.centerSection {
+    flex: 2;
+    text-align: center; /* Center content horizontally */
+}
+
+.socialLinks {
+    margin-bottom: 40px; /* Reduced margin for better alignment */
+}
+
+
+.socialLinks a {
+    margin: 0 15px; /* Increased margin for better spacing */
+    color: #ffffff;
+    font-weight: bold;
+    text-decoration: none;
+    font-size: 1.2rem; /* Increased font size for better visibility */
+}
+
+.socialLinks a:hover {
+    text-decoration: underline;
+}
+
+/* App Links */
+.appLinks {
+    margin: 10px 0; /* Adjusted margin for better alignment */
+}
+
+.appLinks img {
+    width: 120px;
+    margin: 0 10px;
+}
+
+/* Contact Info */
 .contactInfo {
-    flex: 1; /* Flex grow for contact section */
-    margin-right: 20px; /* Space between sections */
+    margin-top: 30px; /* Adjusted margin for better alignment */
+
 }
 
-.socialMedia {
-    flex: 1; /* Flex grow for social media section */
+.contactInfo p {
+    margin: 5px 0;
+    font-size: 1rem;
+    color: white;
 }
 
-h3 {
-    font-size: 1.5rem; /* Font size for headings */
-    margin-bottom: 15px; /* Space below heading */
-    color: #28a745; /* Green color for headings */
+/* Right Section */
+.rightSection {
+    flex: 1;
+    text-align: center; /* Center content horizontally */
 }
 
-p {
-    margin: 5px 0; /* Margin for paragraphs */
-    font-size: 1rem; /* Font size for paragraphs */
+.sdgs {
+    display: flex;
+    justify-content: center; /* Center SDGs horizontally */
+    flex-direction: row; /* Stack SDGs vertically */
+    align-items: center; /* Center SDGs vertically */
+    gap: 40px;
+
 }
 
-.contactLink {
-    color: #007bff; /* Link color */
-    text-decoration: none; /* No underline */
+.sdgImage {
+    width: 100px;
+    margin-bottom: 10px;
+    border-radius: 7px;
+    padding-bottom: -20px;
+
 }
 
-.contactLink:hover {
-    text-decoration: underline; /* Underline on hover */
+/* Bottom Layer (darker background) */
+.footerBottom {
+    background-color: #005250;
+    padding: 20px 0;
+    text-align: center;
+    color: white;
 }
 
-.socialIcons {
-    display: flex; /* Flexbox for social icons */
-    justify-content: center; /* Center social icons */
-    gap: 15px; /* Space between social icons */
+.bottomLinks {
+    margin-bottom: 15px;
 }
 
-.socialIcon {
-    display: flex; /* Make sure the icon wraps around the image */
-    justify-content: center; /* Center icon */
+.bottomLinks a {
+    margin: 0 15px;
+    color: white;
+    text-decoration: none;
+    font-size: 0.9rem;
 }
 
-.icon {
-    width: 30px; /* Adjust the size of the icons */
-    height: auto; /* Maintain aspect ratio */
-    transition: transform 0.3s; /* Transition effect */
+.bottomLinks a:hover {
+    text-decoration: underline;
 }
 
-.icon:hover {
-    transform: scale(1.1); /* Scale up on hover */
-}
-
-.footerLinks {
-    margin-top: 20px; /* Space above footer links */
-    font-size: 0.9rem; /* Smaller font size for footer links */
-}
-
-.footerLink {
-    color: #ffffff; /* White color for footer links */
-    text-decoration: none; /* No underline */
-    transition: color 0.3s; /* Transition effect */
-}
-
-.footerLink:hover {
-    color: #28a745; /* Change color on hover */
+.footerBottom p {
+    font-size: 0.8rem;
+    margin: 0;
+    color: rgb(201, 188, 188);
 }

@@ -13,7 +13,7 @@ export default function Navbar() {
   };
 
   return (
-    <nav className={`navbar navbar-expand-lg ${styles.navbar}`}>
+    <nav className={`navbar navbar-expand-lg fixed-top ${styles.navbar}`}>
       <div className="container-fluid">
         <div className={`d-flex justify-content-between align-items-center ${styles.navContainer}`}>
           <div className={styles.navLogo}>
@@ -42,6 +42,9 @@ export default function Navbar() {
               </li>
               <li className={styles.navItem}>
                 <HashLink smooth to="/#testimonials" className={styles.navLink} onClick={toggleNav}>Testimonials</HashLink>
+              </li>
+              <li className={styles.navItem}>
+                <HashLink smooth to="/#call-to-action" className={styles.navLink} onClick={toggleNav}>About Food Waste</HashLink> {/* New link */}
               </li>
               <li className={styles.navItem}>
                 <Link to="/Login" className={`${styles.navLink} ${styles.loginButton}`} onClick={toggleNav}>Login</Link>

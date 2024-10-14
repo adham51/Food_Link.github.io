@@ -71,9 +71,9 @@
 /* Left Text: Help the environment by reducing food waste */
 .textLeft {
     position: absolute;
-    left: 170px;
+    left: 70px;
     top: 500px; /* Start much lower initially */
-    max-width: 300px;
+    max-width: 420px;
     text-align: left;
     opacity: 0;
     transform: translateY(400px); /* Start lower to rise up properly */
@@ -81,7 +81,7 @@
 }
 
 .textLeft p {
-    font-size: 24px;
+    font-size: 31px;
     color: #00615f;
     font-weight: bold;
     display: flex;
@@ -89,17 +89,18 @@
 }
 
 .textLeft i {
-    font-size: 24px;
-    margin-right: 10px; /* Space between icon and text */
+    font-size: 35px;
+    margin-right: 20px; /* Space between icon and text */
+    padding-right: 10px; /* Space between icon and text */
     color: #00615f;
 }
 
 /* Right Text: Rescue food near you */
 .textRight {
     position: absolute;
-    right: 200px;
+    right: 120px;
     top: 500px; /* Start much lower initially */
-    max-width: 300px;
+    max-width: 400px;
     text-align: right;
     opacity: 0;
     transform: translateY(300px); /* Start lower to rise up properly */
@@ -107,7 +108,7 @@
 }
 
 .textRight p {
-    font-size: 24px;
+    font-size: 31px;
     color: #00615f;
     font-weight: bold;
     display: flex;
@@ -116,8 +117,8 @@
 }
 
 .textRight i {
-    font-size: 24px;
-    margin-left: 10px; /* Space between text and icon */
+    font-size: 35px;
+    margin-left: 20px; /* Space between text and icon */
     color: #00615f;
 }
 
@@ -137,7 +138,7 @@
 
 .revealImage {
     opacity: 1;
-    transform: translateY(-20px); /* Image slides up and appears */
+    transform: translateY(-6px); /* Image slides up and appears */
 }
 
 /* Reveal Animation for Text */

@@ -242,4 +242,25 @@ request.get('/auth/me', authenticateToken, (req, res) => {
 
 
 
+// Route to get charity info using food_id
+request.get('/charityinfo/food/:foodId', (req, res) => {
+    const foodId = req.params.foodId;
+
+    const query = `
+        SELECT users.name, users.email, requests.request_id
+        FROM users
+        INNER JOIN requests ON users.user_id = requests.charity_id
+        WHERE requests.food_id = ?  -- Match the food_id in the requests table
+    `;
+
+    db.query(query, [foodId], (err, data) => {
+        if (err) {
+            res.status(500).json({ message: 'Error fetching charity info' });
+            console.log(err);
+        } else {
+            res.status(200).json(data);  
+        }
+    });
+});
+
 module.exports = request;
