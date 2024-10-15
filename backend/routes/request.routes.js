@@ -263,4 +263,26 @@ request.get('/charityinfo/food/:foodId', (req, res) => {
     });
 });
 
+// Update request status to "fulfilled"
+request.put('/updaterequeststatus/:requestId', (req, res) => {
+    const requestId = req.params.requestId;
+
+    // Query to update the status to 'fulfilled'
+    const query = `UPDATE requests SET status = 'fulfilled' WHERE request_id = ?`;
+
+    db.query(query, [requestId], (err, result) => {
+        if (err) {
+            console.error("Error updating request status:", err);
+            return res.status(500).json({ message: 'Error updating request status' });
+        }
+
+        if (result.affectedRows > 0) {
+            res.json({ message: 'Request status updated successfully' });
+        } else {
+            res.status(404).json({ message: 'Request not found' });
+        }
+    });
+});
+
+
 module.exports = request;

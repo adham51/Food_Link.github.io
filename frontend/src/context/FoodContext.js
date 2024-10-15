@@ -40,7 +40,7 @@ export const FoodProvider = ({ children }) => {
     };
 
     fetchFoodItems();
-  }, [currUserId]);
+  }, [currUserId,foodList]);
 
   // Function to handle user login
   const handleUserLogin = (userId) => {

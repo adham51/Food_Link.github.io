@@ -1,16 +1,13 @@
-import React, { useEffect, useState } from 'react';
+import React, { useContext, useEffect, useState } from 'react';
 import FoodItem from './FoodItem';
 import './FoodItem.css'
-const FoodList = ({ foodList }) => {
-    const [count, setCount] = useState(foodList.length)
-
-    
-    const incrementCount = () => {
-        setCount((prevCount) => prevCount + 1); // Update state using previous state
-      };
-      if(foodList.length !== count){
-        incrementCount();
-      }
+import { FoodContext } from '../../context/FoodContext';
+import { useAsyncError } from 'react-router';
+const FoodList = () => {
+    const { foodList } = useContext(FoodContext);
+    const [myFoodList, setMyFoodList] = useState(foodList);
+    console.log(myFoodList)
+ 
     return (
         <div className="row">
             {foodList.map((food, index) => (

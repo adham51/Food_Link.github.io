@@ -4,7 +4,8 @@ import "./FoodItem.css"; // For additional custom styling
 
 export default function FoodItem({ food, index }) {
   const [charityInfo, setCharityInfo] = useState(null);
-  console.log(food.food_id);
+  const [requestId, setRequestId] = useState(null); // Track the request ID
+  const [isDonated, setIsDonated] = useState(false); // Track donation status
 
   useEffect(() => {
     // Fetch charity info if the food is claimed
@@ -17,8 +18,33 @@ export default function FoodItem({ food, index }) {
         .catch((error) => {
           console.log("Error fetching charity info", error);
         });
+
+      // Fetch the request ID associated with this food item
+      axios
+        .get(`/getrequestid/${food.food_id}`) // Assuming this API gets the request ID for the food item
+        .then((response) => {
+          setRequestId(response.data.requestId); // Set requestId
+        })
+        .catch((error) => {
+          console.log("Error fetching request ID", error);
+        });
     }
   }, [food.status, food.food_id]);
+
+  // Handle donation (when Donate button is clicked)
+  const handleDonate = () => {
+    if (requestId) {
+      axios
+        .put(`/updaterequeststatus/${requestId}`, { status: "fulfilled" })
+        .then((response) => {
+          console.log("Request fulfilled:", response.data);
+          setIsDonated(true); // Mark donation as complete
+        })
+        .catch((error) => {
+          console.error("Error updating request status:", error);
+        });
+    }
+  };
 
   return (
     <div className="col-12 col-sm-6 col-md-4 mb-4" key={index}>
@@ -44,6 +70,18 @@ export default function FoodItem({ food, index }) {
                 <strong>Charity Email:</strong> {charityInfo.email}
               </p>
             </div>
+          )}
+
+          {/* Donate button to fulfill the request */}
+          {food.status === "claimed" && !isDonated && (
+            <button className="btn btn-primary mt-2" onClick={handleDonate}>
+              Donate
+            </button>
+          )}
+
+          {/* Show message if the donation is completed */}
+          {isDonated && (
+            <p className="text-success mt-2">Donation completed successfully!</p>
           )}
         </div>
       </div>

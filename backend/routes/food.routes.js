@@ -104,4 +104,27 @@ food.get('/food/:food_id', (req, res) => {
 });
 
 
+food.get('/getrequestid/:foodId', (req, res) => {
+    const foodId = req.params.foodId;
+
+    // Query to get the request_id from the requests table
+    const query = `SELECT request_id FROM requests WHERE food_id = ?`;
+
+    db.query(query, [foodId], (err, result) => {
+        if (err) {
+            console.error("Error fetching request ID:", err);
+            return res.status(500).json({ message: 'Error fetching request ID' });
+        }
+
+        if (result.length > 0) {
+            res.json({ requestId: result[0].request_id });
+        } else {
+            res.status(404).json({ message: 'Request not found' });
+        }
+    });
+});
+
+
+
+
 module.exports = food;
