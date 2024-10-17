@@ -1,11 +1,10 @@
-import React, { useState } from 'react';
+import React, { useState, useContext } from 'react';
 import axios from 'axios';
-import { useNavigate } from 'react-router-dom'; // Import useNavigate
+import { useNavigate } from 'react-router-dom'; 
 import Navbar from '../Header.js/NavBar';
-
 import Footer from '../Footer/Footer';
-import styles from './Login.module.css'; // Make sure to create a CSS file for styling
-
+import styles from './Login.module.css'; 
+import { FoodContext } from '../../context/FoodContext'; // Import FoodContext
 
 const Login = () => {
     const [formData, setFormData] = useState({
@@ -14,7 +13,8 @@ const Login = () => {
     });
 
     const [message, setMessage] = useState('');
-    const navigate = useNavigate(); // Initialize useNavigate
+    const navigate = useNavigate(); 
+    const { handleUserLogin } = useContext(FoodContext); // Access handleUserLogin from context
 
     const handleChange = (e) => {
         const { name, value } = e.target;
@@ -31,17 +31,19 @@ const Login = () => {
             setMessage(response.data.message);
     
             if (response.data.token) {
-                localStorage.setItem('token', response.data.token); // Save token to local storage
-                localStorage.setItem('charityName', response.data.data[0].name); // Save charity/user name to local storage
+                localStorage.setItem('token', response.data.token); 
+                localStorage.setItem('charityName', response.data.data[0].name); 
     
-                // Check user type and redirect accordingly
+                // Call handleUserLogin to store userId
+                handleUserLogin(response.data.data[0].user_id); // Assuming response contains user_id
+
+                // Redirect based on user type
                 if (response.data.data[0].user_type === 'charity') {
-                    navigate('/FoodDonationApp'); // Redirect to FoodDonationApp for charity
-                } 
-                else if (response.data.data[0].user_type === 'donor') {
+                    navigate('/FoodDonationApp'); 
+                } else if (response.data.data[0].user_type === 'donor') {
                     navigate('/DonerDashBoard'); 
                 } else {
-                    navigate('/FoodDonationApp'); // Redirect to FoodDonationApp for others (if applicable)
+                    navigate('/FoodDonationApp'); 
                 }
             }
         } catch (error) {
@@ -50,7 +52,6 @@ const Login = () => {
         }
     };
     
-
     return (
         <div className={styles.container}>
             <Navbar></Navbar>
@@ -76,7 +77,6 @@ const Login = () => {
                         id="password"
                         name="password"
                         placeholder="Enter your password"
-
                         value={formData.password}
                         onChange={handleChange}
                         required
