@@ -5,8 +5,7 @@ import { FoodContext } from '../../context/FoodContext';
 import { useAsyncError } from 'react-router';
 const FoodList = () => {
     const { foodList } = useContext(FoodContext);
-    const [myFoodList, setMyFoodList] = useState(foodList);
-    console.log(myFoodList)
+
  
     return (
         <div className="row">

@@ -285,4 +285,27 @@ request.put('/updaterequeststatus/:requestId', (req, res) => {
 });
 
 
+// Function to get request status by requestId
+request.get('/requeststatus/:requestId', (req, res) => {
+    const requestId = req.params.requestId;
+
+    // Query to fetch the status of the request
+    const query = 'SELECT status FROM requests WHERE request_id = ?';
+
+    db.query(query, [requestId], (err, result) => {
+        if (err) {
+            console.error("Error fetching request status:", err);
+            return res.status(500).json({ message: 'Error fetching request status' });
+        }
+
+        if (result.length > 0) {
+            res.json({ status: result[0].status });
+        } else {
+            res.status(404).json({ message: 'Request not found' });
+        }
+    });
+});
+
+
+
 module.exports = request;

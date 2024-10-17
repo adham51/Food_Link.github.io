@@ -5,11 +5,12 @@ import "./FoodItem.css"; // For additional custom styling
 export default function FoodItem({ food, index }) {
   const [charityInfo, setCharityInfo] = useState(null);
   const [requestId, setRequestId] = useState(null); // Track the request ID
-  const [isDonated, setIsDonated] = useState(false); // Track donation status
+  const [isDonated, setIsDonated] = useState(''); // Track donation status
 
   useEffect(() => {
-    // Fetch charity info if the food is claimed
+    // Fetch charity info and request ID if the food is claimed
     if (food.status === "claimed") {
+      // Fetch charity info
       axios
         .get(`/charityinfo/food/${food.food_id}`)
         .then((response) => {
@@ -21,7 +22,7 @@ export default function FoodItem({ food, index }) {
 
       // Fetch the request ID associated with this food item
       axios
-        .get(`/getrequestid/${food.food_id}`) // Assuming this API gets the request ID for the food item
+        .get(`/getrequestid/${food.food_id}`)
         .then((response) => {
           setRequestId(response.data.requestId); // Set requestId
         })
@@ -31,6 +32,20 @@ export default function FoodItem({ food, index }) {
     }
   }, [food.status, food.food_id]);
 
+  useEffect(() => {
+    // Fetch request status if requestId is available
+    if (requestId) {
+      axios
+        .get(`/requeststatus/${requestId}`)
+        .then((response) => {
+          setIsDonated(response.data.status); // Set donation status
+        })
+        .catch((error) => {
+          console.log("Error fetching request status", error);
+        });
+    }
+  }, [requestId]); // Dependency on requestId
+
   // Handle donation (when Donate button is clicked)
   const handleDonate = () => {
     if (requestId) {
@@ -38,7 +53,7 @@ export default function FoodItem({ food, index }) {
         .put(`/updaterequeststatus/${requestId}`, { status: "fulfilled" })
         .then((response) => {
           console.log("Request fulfilled:", response.data);
-          setIsDonated(true); // Mark donation as complete
+          setIsDonated("fulfilled"); // Mark donation as complete
         })
         .catch((error) => {
           console.error("Error updating request status:", error);
@@ -73,14 +88,14 @@ export default function FoodItem({ food, index }) {
           )}
 
           {/* Donate button to fulfill the request */}
-          {food.status === "claimed" && !isDonated && (
+          {food.status === "claimed" && isDonated !== "fulfilled" && (
             <button className="btn btn-primary mt-2" onClick={handleDonate}>
               Donate
             </button>
           )}
 
           {/* Show message if the donation is completed */}
-          {isDonated && (
+          {isDonated === "fulfilled" && (
             <p className="text-success mt-2">Donation completed successfully!</p>
           )}
         </div>
