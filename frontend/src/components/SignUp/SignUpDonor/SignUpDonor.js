@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import axios from 'axios';
 import styles from './SignUpDonor.module.css';
 import Navbar from '../../Header.js/NavBar';
+import Footer from '../../Footer/Footer';
 
 const SignUpDonor = () => {
     const [formData, setFormData] = useState({
@@ -45,6 +46,8 @@ const SignUpDonor = () => {
                         type="text"
                         id="name"
                         name="name"
+                        placeholder="Enter your name"
+
                         value={formData.name}
                         onChange={handleChange}
                         required
@@ -56,6 +59,8 @@ const SignUpDonor = () => {
                         type="email"
                         id="email"
                         name="email"
+                        placeholder="Enter your email"
+
                         value={formData.email}
                         onChange={handleChange}
                         required
@@ -67,6 +72,8 @@ const SignUpDonor = () => {
                         type="password"
                         id="password"
                         name="password"
+                        placeholder="Enter your password"
+
                         value={formData.password}
                         onChange={handleChange}
                         required
@@ -75,6 +82,9 @@ const SignUpDonor = () => {
                 <button type="submit" className={styles.submitButton}>Sign Up</button>
             </form>
             {message && <p className={styles.message}>{message}</p>}
+            <br></br>
+            <br></br>
+            <Footer></Footer>
         </div>
     );
 };

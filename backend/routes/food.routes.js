@@ -103,6 +103,21 @@ food.get('/food/:food_id', (req, res) => {
     });
 });
 
+// get user-id by food-id
+food.get('/userID/:food_id',(req,res)=>{
+    const food_id = req.params.food_id;
+    db.query(`select user_id from foodlist where food_id = ${food_id}`,(err,data)=>{
+        if(err)
+        {
+            res.json({message: 'Error'});
+            console.log(err);
+        }
+        else
+        {
+            res.json(data[0]);
+        }
+    });
+});
 
 food.get('/getrequestid/:foodId', (req, res) => {
     const foodId = req.params.foodId;
@@ -123,8 +138,6 @@ food.get('/getrequestid/:foodId', (req, res) => {
         }
     });
 });
-
-
 
 
 module.exports = food;

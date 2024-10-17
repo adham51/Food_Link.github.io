@@ -1,12 +1,17 @@
-import React, { useState, useEffect } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import axios from 'axios';
 import styles from './AboutUs.module.css';
+import bag from '../../Assets/bag2.png';
 
 export default function AboutUs() {
     const [totalMeals, setTotalMeals] = useState(0);
     const [totalCharities, setTotalCharities] = useState(0);
 
-    
+    const imageRef = useRef(null);
+    const topTextRef = useRef(null);
+    const leftTextRef = useRef(null);
+    const rightTextRef = useRef(null);
+
     useEffect(() => {
         axios.get('/request/totalmeals')
             .then((response) => {
@@ -23,12 +28,44 @@ export default function AboutUs() {
             .catch((error) => {
                 console.error('Error fetching total charities:', error);
             });
-    }, []); 
+    }, []);
+
+    useEffect(() => {
+        const handleScroll = () => {
+            const rect = imageRef.current.getBoundingClientRect();
+            const windowHeight = window.innerHeight;
+
+            if (rect.top < windowHeight && rect.bottom > 0) {
+                imageRef.current.classList.add(styles.revealImage);
+                topTextRef.current.classList.add(styles.revealText);
+                leftTextRef.current.classList.add(styles.revealRightLeft);
+                rightTextRef.current.classList.add(styles.revealRightLeft);
+            } else {
+                imageRef.current.classList.remove(styles.revealImage);
+                topTextRef.current.classList.remove(styles.revealText);
+                leftTextRef.current.classList.remove(styles.revealRightLeft);
+                rightTextRef.current.classList.remove(styles.revealRightLeft);
+            }
+        };
+
+        window.addEventListener('scroll', handleScroll);
+        return () => {
+            window.removeEventListener('scroll', handleScroll);
+        };
+    }, []);
 
     return (
         <section id="about" className={styles.aboutUs}>
-            <h2>About FoodLink</h2>
-            <p>FoodLink's mission is to connect surplus food from donors to charities, reducing food waste and helping those in need.</p>
+            {/* Mission Title and Text */}
+            <div className={styles.missionTitle}>
+                <div className={styles.titleRectangle}></div>
+                <h2>OUR MISSION</h2>
+            </div>
+            <div className={styles.missionText}>
+                <p>Food Link is a social impact company with a mission to empower everyone to fight food waste in Egypt together.</p>
+            </div>
+
+            {/* Impact Stats */}
             <div className={styles.impactStats}>
                 <div className={styles.stat}>
                     <h3>{totalMeals}+</h3>
@@ -38,6 +75,27 @@ export default function AboutUs() {
                     <h3>{totalCharities}+</h3>
                     <p>Charities Helped</p>
                 </div>
+            </div>
+
+            {/* Why Use FoodLink */}
+            <div ref={topTextRef} className={styles.topText}>
+                <h2>Why Use</h2>
+                <h2 className={styles.topTextFL}>Food Link</h2>
+            </div>
+
+            {/* Left Text with Earth Icon */}
+            <div ref={leftTextRef} className={styles.textLeft}>
+                <p><i className="fas fa-globe"></i> Help the environment by reducing food waste</p>
+            </div>
+
+            {/* Right Text with Pizza Icon */}
+            <div ref={rightTextRef} className={styles.textRight}>
+                <p>Save food near you <i className="fas fa-pizza-slice"></i></p>
+            </div>
+
+            {/* Image */}
+            <div className={styles.imageContainer}>
+                <img src={bag} alt="Food Link Logo" ref={imageRef} className={styles.missionImage} />
             </div>
         </section>
     );

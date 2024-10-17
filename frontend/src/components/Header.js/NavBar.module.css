@@ -83,6 +83,20 @@
     color: #ffffff;
 }
 
+.logoutButton {
+    background-color: #e42424;
+    color: white;
+    padding: 10px 20px;
+    transition: background-color 0.3s ease;
+    border-radius: 7px;
+}
+.logoutButton:hover,
+.logoutButton:focus {
+    background-color: #ff4d4d;
+    color: #ffffff;
+}
+
+
 /* Hamburger menu button */
 .hamburger {
     display: none; /* Hidden by default */

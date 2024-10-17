@@ -1,32 +1,14 @@
 
 
 .container {
-    max-width: 800px;
+    
     margin: 0 auto;
     padding: 20px;
-    background-color: #051929;
+    background-color: #333;
     border-radius: 8px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-}
-
-h1 {
-    text-align: center;
-    color: #333;
-}
-
-p {
-    color: #666;
-    font-size: 14px;
-}
-
-
-.container {
     width: 100%;
     margin: 0 auto;
     padding: 0;
 }
 
-.content {
-    margin-top: 20px;
-    padding: 20px;
-}

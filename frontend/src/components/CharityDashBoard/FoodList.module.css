@@ -3,10 +3,11 @@
     width: 80%;
     margin: 0 auto;
     padding: 20px;
-    background-color: #5687b8; /* Softer background */
+    background-color: #8d9094; /* Softer background */
     border-radius: 12px;
     box-shadow: 0 6px 12px rgba(0, 0, 0, 0.1);
     transition: all 0.3s ease;
+    
 }
 
 /* Title Styling */
@@ -22,6 +23,7 @@
 ul {
     list-style-type: none;
     padding: 0;
+    
 }
 
 li {
@@ -108,4 +110,16 @@ li p {
     font-size: 14px;
     line-height: 1.5;
     color: #555; /* Subtle text color */
+}
+.foodDetails span {
+    font-size: 16px;
+    color: #033a07; /* Lighter orange for contrast */
+  }
+
+  .blueText {
+    color: blue;
+}
+
+.greenText {
+    color: green;
 }
