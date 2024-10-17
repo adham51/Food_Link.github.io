@@ -103,28 +103,21 @@ food.get('/food/:food_id', (req, res) => {
     });
 });
 
-
-food.get('/getrequestid/:foodId', (req, res) => {
-    const foodId = req.params.foodId;
-
-    // Query to get the request_id from the requests table
-    const query = `SELECT request_id FROM requests WHERE food_id = ?`;
-
-    db.query(query, [foodId], (err, result) => {
-        if (err) {
-            console.error("Error fetching request ID:", err);
-            return res.status(500).json({ message: 'Error fetching request ID' });
+// get user-id by food-id
+food.get('/userID/:food_id',(req,res)=>{
+    const food_id = req.params.food_id;
+    db.query(`select user_id from foodlist where food_id = ${food_id}`,(err,data)=>{
+        if(err)
+        {
+            res.json({message: 'Error'});
+            console.log(err);
         }
-
-        if (result.length > 0) {
-            res.json({ requestId: result[0].request_id });
-        } else {
-            res.status(404).json({ message: 'Request not found' });
+        else
+        {
+            res.json(data[0]);
         }
     });
 });
-
-
 
 
 module.exports = food;
