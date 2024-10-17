@@ -48,7 +48,6 @@ export default function CharityRequests() {
                         };
                     })
                 );
-                
 
                 // fetch donor-id by request.food_id
                 const requestsWithDonorDetails = await Promise.all(
@@ -64,7 +63,6 @@ export default function CharityRequests() {
                     })
                 );
 
-                setRequests(requestsWithFoodDetails);
                 setRequests(requestsWithDonorDetails);
                 setLoading(false);
             } catch (error) {
@@ -82,8 +80,8 @@ export default function CharityRequests() {
             setSuccessMessage(response.data.message);
 
             // Update the requests list after successful cancellation
-            setRequests(prevRequests =>
-                prevRequests.filter(request => request.request_id !== requestId)
+            setRequests((prevRequests) =>
+                prevRequests.filter((request) => request.request_id !== requestId)
             );
         } catch (error) {
             setError('Error cancelling the request.');
@@ -95,7 +93,7 @@ export default function CharityRequests() {
     }
 
     if (error) {
-        return <div>{error}</div>;
+        return <div className={styles.errorMessage}>{error}</div>;
     }
 
     return (
@@ -113,7 +111,7 @@ export default function CharityRequests() {
                                 <p><strong>Quantity:</strong> {request.quantity}</p>
                                 <p><strong>Donor Name:</strong> {request.donor_name}</p>
                                 <p><strong>Donor Email:</strong> {request.donor_email}</p>
-                                <p><strong>Status:</strong> {request.status}</p>
+                                <span><strong>Status:</strong> {request.status}</span>
                             </div>
                             {request.status !== 'cancelled' && (
                                 <button

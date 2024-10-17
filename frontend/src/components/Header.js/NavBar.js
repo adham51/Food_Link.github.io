@@ -6,13 +6,13 @@ import flLogo from "../../Assets/logoidea1.png";
 
 export default function Navbar() {
   const [isOpen, setIsOpen] = useState(false);
-  const [currUserId, setCurrUserId] = useState(null);
+  const [token, setCurrUserId] = useState(null);
   const navigate = useNavigate(); // Initialize useNavigate
 
   // Check local storage for user ID on component mount
   useEffect(() => {
-    const storedUserId = localStorage.getItem("currUserId");
-    setCurrUserId(storedUserId);
+    const token = localStorage.getItem("token");
+    setCurrUserId(token);
   }, []);
 
   const toggleNav = () => {
@@ -20,7 +20,7 @@ export default function Navbar() {
   };
 
   const handleLogout = () => {
-    localStorage.removeItem("currUserId"); // Remove user ID from local storage
+    localStorage.clear(); 
     setCurrUserId(null); 
     navigate("/#hero"); 
   };
@@ -60,8 +60,8 @@ export default function Navbar() {
                 <HashLink smooth to="/#call-to-action" className={styles.navLink} onClick={toggleNav}>About Food Waste</HashLink>
               </li>
               <li className={styles.navItem}>
-                {currUserId ? (
-                  <button className={`${styles.navLink} ${styles.loginButton}`} onClick={handleLogout}>
+                {token ? (
+                  <button className={`${styles.navLink} ${styles.logoutButton}`} onClick={handleLogout}>
                     Logout
                   </button>
                 ) : (
