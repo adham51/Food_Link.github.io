@@ -65,7 +65,9 @@ export default function CharityRequests() {
 
                 setRequests(requestsWithDonorDetails);
                 setLoading(false);
+                
             } catch (error) {
+                console.log(error);
                 setError('Error fetching requests.');
                 setLoading(false);
             }
