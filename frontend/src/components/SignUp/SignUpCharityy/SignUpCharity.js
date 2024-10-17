@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import axios from 'axios';
 import styles from './SignUpCharity.module.css'; // Make sure to create a CSS file for styling
 import Navbar from '../../Header.js/NavBar';
+import Footer from '../../Footer/Footer';
 
 const SignUpCharity = () => {  
     const [formData, setFormData] = useState({
@@ -52,6 +53,8 @@ const SignUpCharity = () => {
                         type="text"
                         id="name"
                         name="name"
+                        placeholder="Enter your name"
+
                         value={formData.name}
                         onChange={handleChange}
                         required
@@ -63,6 +66,8 @@ const SignUpCharity = () => {
                         type="email"
                         id="email"
                         name="email"
+                        placeholder="Enter your email"
+
                         value={formData.email}
                         onChange={handleChange}
                         required
@@ -74,6 +79,8 @@ const SignUpCharity = () => {
                         type="password"
                         id="password"
                         name="password"
+                        placeholder="Enter your password"
+
                         value={formData.password}
                         onChange={handleChange}
                         required
@@ -83,6 +90,9 @@ const SignUpCharity = () => {
             </form>
             {message && <p className={styles.message}>{message}</p>}
             {charityId && <p className={styles.charityId}>Your Charity ID: {charityId}</p>} {/* Display charity_id */}
+            <br></br>
+            <br></br>
+            <Footer></Footer>
         </div>
     );
 };

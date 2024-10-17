@@ -1,8 +1,11 @@
 /* SignUpCharity.module.css */
+body{
+    background-color: #f9f3f0;
+}
 
 .container {
-    padding: 20px; /* Add padding around the container */
-    background-color: #f9f9f9; /* Light background */
+    padding-top: 120px;
+    background-color: #f9f3f0; /* Light background */
     min-height: calc(100vh - 80px); /* Ensure the container fills the space below the Navbar */
     display: flex;
     flex-direction: column;
@@ -38,17 +41,17 @@ input {
 .submitButton {
     width: 100%; /* Full width for button */
     padding: 10px; /* Padding for button */
-    background-color: #28a745; /* Green background */
+    background-color: #00615f; /* Green background */
     color: white; /* White text */
     border: none; /* No border */
     border-radius: 5px; /* Rounded corners */
-    font-size: 16px; /* Font size */
-    cursor: pointer; /* Pointer cursor */
+    font-size: 20px; /* Font size */
+    cursor:pointer; /* Pointer cursor */
     transition: background-color 0.3s; /* Smooth transition */
 }
 
 .submitButton:hover {
-    background-color: #218838; /* Darker green on hover */
+    background-color: #4bbbb9; /* Darker green on hover */
 }
 
 .message {

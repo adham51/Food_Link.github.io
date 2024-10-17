@@ -1,15 +1,28 @@
-import { useState } from 'react';
-import { Link } from "react-router-dom";
+import { useState, useEffect } from 'react';
+import { Link, useNavigate } from "react-router-dom"; // Import useNavigate
 import { HashLink } from "react-router-hash-link";
 import styles from './NavBar.module.css';
 import flLogo from "../../Assets/logoidea1.png";
 
 export default function Navbar() {
   const [isOpen, setIsOpen] = useState(false);
+  const [currUserId, setCurrUserId] = useState(null);
+  const navigate = useNavigate(); // Initialize useNavigate
 
-  // Toggles the navigation links on mobile
+  // Check local storage for user ID on component mount
+  useEffect(() => {
+    const storedUserId = localStorage.getItem("currUserId");
+    setCurrUserId(storedUserId);
+  }, []);
+
   const toggleNav = () => {
     setIsOpen(!isOpen);
+  };
+
+  const handleLogout = () => {
+    localStorage.removeItem("currUserId"); // Remove user ID from local storage
+    setCurrUserId(null); 
+    navigate("/#hero"); 
   };
 
   return (
@@ -44,10 +57,18 @@ export default function Navbar() {
                 <HashLink smooth to="/#testimonials" className={styles.navLink} onClick={toggleNav}>Testimonials</HashLink>
               </li>
               <li className={styles.navItem}>
-                <HashLink smooth to="/#call-to-action" className={styles.navLink} onClick={toggleNav}>About Food Waste</HashLink> {/* New link */}
+                <HashLink smooth to="/#call-to-action" className={styles.navLink} onClick={toggleNav}>About Food Waste</HashLink>
               </li>
               <li className={styles.navItem}>
-                <Link to="/Login" className={`${styles.navLink} ${styles.loginButton}`} onClick={toggleNav}>Login</Link>
+                {currUserId ? (
+                  <button className={`${styles.navLink} ${styles.loginButton}`} onClick={handleLogout}>
+                    Logout
+                  </button>
+                ) : (
+                  <Link to="/Login" className={`${styles.navLink} ${styles.loginButton}`} onClick={toggleNav}>
+                    Login
+                  </Link>
+                )}
               </li>
             </ul>
           </div>

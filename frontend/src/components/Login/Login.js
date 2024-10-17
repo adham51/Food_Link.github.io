@@ -1,6 +1,9 @@
 import React, { useState } from 'react';
 import axios from 'axios';
 import { useNavigate } from 'react-router-dom'; // Import useNavigate
+import Navbar from '../Header.js/NavBar';
+
+import Footer from '../Footer/Footer';
 import styles from './Login.module.css'; // Make sure to create a CSS file for styling
 
 
@@ -50,6 +53,7 @@ const Login = () => {
 
     return (
         <div className={styles.container}>
+            <Navbar></Navbar>
             
             <h2>Login</h2>
             <form onSubmit={handleSubmit} className={styles.form}>
@@ -59,6 +63,7 @@ const Login = () => {
                         type="email"
                         id="email"
                         name="email"
+                        placeholder="Enter your email"
                         value={formData.email}
                         onChange={handleChange}
                         required
@@ -70,6 +75,8 @@ const Login = () => {
                         type="password"
                         id="password"
                         name="password"
+                        placeholder="Enter your password"
+
                         value={formData.password}
                         onChange={handleChange}
                         required
@@ -78,6 +85,10 @@ const Login = () => {
                 <button type="submit" className={styles.submitButton}>Login</button>
             </form>
             {message && <p className={styles.message}>{message}</p>}
+            <br></br>
+            <br></br>
+            <br></br>
+            <Footer></Footer>
         </div>
     );
 };
