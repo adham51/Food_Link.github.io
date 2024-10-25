@@ -72,7 +72,7 @@ const Footer = () => {
           <a href="#">Food Waste Sources</a>
           <a href="#">Status</a>
         </div>
-        <p>Copyright © 2023—2024 Too Good To Go International. All Rights Reserved.</p>
+        <p>Copyright © 2023—2024 Food Link. All Rights Reserved.</p>
       </div>
     </div>
   );
