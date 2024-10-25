@@ -41,8 +41,10 @@ jobs:
         uses: actions/upload-pages-artifact@v3
         if: always()
         with:
-          # Upload entire repository
-          path: '.'
+          # Set the artifact name to 'github-pages' to match the deployment step
+          name: github-pages
+          # Upload the build output or static files
+          path: '.'  # Ensure this points to the folder containing the static site files
 
       - name: Deploy to GitHub Pages
         id: deployment
