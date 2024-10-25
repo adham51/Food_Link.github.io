@@ -24,7 +24,7 @@ const SignUpDonor = () => {
     const handleSubmit = async (e) => {
         e.preventDefault();
         try {
-            const response = await axios.post('/registerdonor', formData);
+            const response = await axios.post('/api/registerdonor', formData);
             setMessage(response.data.message);
             // Optionally, reset the form after successful submission
             setFormData({ name: '', email: '', password: '' });

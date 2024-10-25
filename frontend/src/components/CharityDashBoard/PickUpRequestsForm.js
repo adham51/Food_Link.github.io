@@ -11,7 +11,7 @@ export default function PickUpRequestForm({ selectedFoodId, onBack }) {
     // Fetch the selected food item details based on selectedFoodId
     useEffect(() => {
         setLoading(true);
-        axios.get(`/food/${selectedFoodId}`) // Assuming this is the endpoint to get food item details
+        axios.get(`/api/food/${selectedFoodId}`) // Assuming this is the endpoint to get food item details
             .then((response) => {
                 setFoodDetails(response.data); // Store the fetched food item details
                 setError('');
@@ -33,7 +33,7 @@ export default function PickUpRequestForm({ selectedFoodId, onBack }) {
         };
 
         setLoading(true);
-        axios.post('/request', requestData, {
+        axios.post('/api/request', requestData, {
             headers: {
                 Authorization: `${localStorage.getItem('token')}` // Assuming token is stored in localStorage
             }

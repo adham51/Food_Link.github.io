@@ -25,7 +25,7 @@ const SignUpCharity = () => {
     const handleSubmit = async (e) => {
         e.preventDefault();
         try {
-            const response = await axios.post('/registercharity', formData);
+            const response = await axios.post('/api/registercharity', formData);
             setMessage(response.data.message);
             
             // Check if the response contains charity_id

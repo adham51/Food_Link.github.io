@@ -11,7 +11,7 @@ export default function FoodList({ onSelectFood }) {
 
     // Fetch available food donations from the backend
     useEffect(() => {
-        axios.get('/available')
+        axios.get('/api/available')
             .then((response) => {
                 setFoodList(response.data);
                 setLoading(false);

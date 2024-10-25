@@ -13,7 +13,7 @@ export default function CharityRequests() {
             try {
                 const charityName = localStorage.getItem('charityName'); // Get the charityName
                 const token = localStorage.getItem('token'); // Assuming you are storing the JWT token after login
-                const charityResponse = await axios.get('/auth/me', {
+                const charityResponse = await axios.get('/api/auth/me', {
                     headers: {
                         Authorization: `${token}`, // Pass the token to the backend
                     },
@@ -22,7 +22,7 @@ export default function CharityRequests() {
 
                 // If charityId is not in localStorage, fetch it using charityName
                 if (!charityId) {
-                    const charityResponse = await axios.get(`/charityid/${charityName}`);
+                    const charityResponse = await axios.get(`/api/charityid/${charityName}`);
                     if (charityResponse.data.user_id) {
                         charityId = charityResponse.data.user_id;
                         localStorage.setItem('charityId', charityId); // Save charityId in localStorage
@@ -34,13 +34,13 @@ export default function CharityRequests() {
                 }
 
                 // Fetch requests based on charityId
-                const response = await axios.get(`/charity/${charityId}`);
+                const response = await axios.get(`/api/charity/${charityId}`);
                 const requestData = response.data;
 
                 // Fetch food details for each request
                 const requestsWithFoodDetails = await Promise.all(
                     requestData.map(async (request) => {
-                        const foodResponse = await axios.get(`/food/${request.food_id}`);
+                        const foodResponse = await axios.get(`/api/food/${request.food_id}`);
                         return {
                             ...request,
                             food_name: foodResponse.data.food_name,
@@ -52,9 +52,9 @@ export default function CharityRequests() {
                 // fetch donor-id by request.food_id
                 const requestsWithDonorDetails = await Promise.all(
                     requestsWithFoodDetails.map(async (request) => {
-                        const donorResponse = await axios.get(`/userID/${request.food_id}`);
+                        const donorResponse = await axios.get(`/api/userID/${request.food_id}`);
                         const donorId = donorResponse.data.user_id;
-                        const donorInfoResponse = await axios.get(`/donorinfo/${donorId}`);
+                        const donorInfoResponse = await axios.get(`/api/donorinfo/${donorId}`);
                         return {
                             ...request,
                             donor_name: donorInfoResponse.data.name,
@@ -78,7 +78,7 @@ export default function CharityRequests() {
 
     const handleCancelRequest = async (requestId) => {
         try {
-            const response = await axios.put(`/updaterequest/${requestId}`, { status: 'cancelled' });
+            const response = await axios.put(`/api/updaterequest/${requestId}`, { status: 'cancelled' });
             setSuccessMessage(response.data.message);
 
             // Update the requests list after successful cancellation

@@ -15,7 +15,7 @@ export const FoodProvider = ({ children }) => {
   // Add food item and update local storage
   const addFoodItem = async (newFood) => {
     try {
-      const response = await axios.post("http://localhost:3003", newFood);
+      const response = await axios.post("http://localhost:3003", newFood); // api/
       const updatedFoodList = [...foodList, response.data];
       setFoodList(updatedFoodList);
       localStorage.setItem("foodList", JSON.stringify(updatedFoodList)); // Save to local storage
@@ -29,7 +29,7 @@ export const FoodProvider = ({ children }) => {
     const fetchFoodItems = async () => {
       if (currUserId) {
         try {
-          const response = await axios.get(`/donor/${currUserId}`);
+          const response = await axios.get(`/api/donor/${currUserId}`);
           const fetchedFoodItems = response.data;
           setFoodList(fetchedFoodItems);
           localStorage.setItem("foodList", JSON.stringify(fetchedFoodItems)); // Save to local storage

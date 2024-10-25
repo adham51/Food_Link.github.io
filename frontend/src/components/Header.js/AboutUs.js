@@ -13,7 +13,7 @@ export default function AboutUs() {
     const rightTextRef = useRef(null);
 
     useEffect(() => {
-        axios.get('/request/totalmeals')
+        axios.get('/api/request/totalmeals')
             .then((response) => {
                 setTotalMeals(response.data.totalMeals);
             })
@@ -21,7 +21,7 @@ export default function AboutUs() {
                 console.error('Error fetching total meals:', error);
             });
 
-        axios.get('/request/totalcharities')
+        axios.get('/api/request/totalcharities')
             .then((response) => {
                 setTotalCharities(response.data.totalCharities);
             })

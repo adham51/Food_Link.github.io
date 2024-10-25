@@ -29,7 +29,7 @@ const AddFoodForm = () => {
 
         try {
             // Make a POST request to your backend
-            const response = await axios.post('/add', newFood, {
+            const response = await axios.post('/api/add', newFood, {
                 headers: {
                     'Authorization': `${localStorage.getItem('token')}`
                 }
